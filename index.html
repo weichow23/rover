@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <title>ROVER</title>
-    <link rel="icon" type="image/x-icon" href="./static/img/icons/brain.ico">
+    <link rel="icon" type="image/x-icon" href="./static/img/icons/logo.png">
     
     <!-- Meta Tags -->
     <meta property="og:url" content="https://vision-x-nyu.github.io/thinking-in-space.github.io/" />
@@ -14,7 +14,6 @@
     
     <meta name="twitter:url" content="https://vision-x-nyu.github.io/thinking-in-space.github.io/" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="./static/img/preview.png" />
     <meta name="twitter:title" content="Thinking in Space: How Multimodal Large Language Models See, Remember and Recall Spaces" />
     <meta name="twitter:description" content="We introduce VSI-Bench, a novel benchmark of over 5,000 video-based visual-spatial intelligence questions, to evaluate and probe MLLMs." />
 
@@ -38,7 +37,7 @@
         h2 { font-size: 1.5rem; margin: 0.5rem 0; color: #4a5568; }
         .button-container { display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; }
         .button { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1rem; background: #3182ce; color: white; text-decoration: none; border-radius: 0.375rem; transition: background-color 0.2s; }
-        .button:hover { background: #2c5aa0; }
+        .button:hover { background: #7150cd; }
         
         /* Basic Styles */
         pre, code { font-size: 16px; }
@@ -325,12 +324,14 @@
     </style>
 
     <!-- Non-critical CSS loaded asynchronously -->
-    <link rel="stylesheet" href="./static/css/style.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" media="print" onload="this.media='all'">
-    
-    <!-- KaTeX for Math - loaded asynchronously -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous" media="print" onload="this.media='all'">
+    <!-- Critical CSS files loaded synchronously -->
+    <!-- All CSS loaded synchronously to prevent FOUC -->
+    <link rel="stylesheet" href="./static/css/style.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+    <!-- KaTeX for Math -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.css" integrity="sha384-yFRtMMDnQtDRO8rLpMIKrtPCD5jdktao2TV19YiZYWMDkUR5GQZR/NOVTdquEx1j" crossorigin="anonymous">
 </head>
 
 <body>
@@ -338,7 +339,11 @@
     <div class="header-wrapper">
         <div class="header-container" id="header-container">
             <div class="header-content">
-                <h1 style="margin-top: 0px"><i>ROVER</i></h1>
+                <h1 style="margin-top: 0px">
+                    <i><span class="rover-logo">
+                        <span class="r1">R</span><span class="o">O</span><span class="v">V</span><span class="e">E</span><span class="r2">R</span>
+                    </span></i>
+                </h1>
                 
                 <h2>Benchmarking Reciprocal Cross-Modal Reasoning for Omnimodal Generation</h2>
 
@@ -346,33 +351,33 @@
                     <!-- Paper authors -->
                     <span class="author-block">
                         <a href="" target="_blank">
-                            Yongyuan Liang</a><sup style="font-size: 0.8em;">△</sup>,</span>
+                            Yongyuan Liang</a><sup style="font-size: 0.8em;">△*</sup>,</span>
                     <span class="author-block">
                         <a href="" target="_blank">
-                            Wei Chow</a><sup style="font-size: 0.8em;">△</sup>,</span>
+                            Wei Chow</a><sup style="font-size: 0.8em;">▲*</sup>,</span>
                     <span class="author-block">
-                        <a href="" target="_blank">Feng Li</a><sup style="font-size: 0.8em;">△</sup>,</span>
+                        <a href="" target="_blank">Feng Li</a><sup style="font-size: 0.8em;">♦</sup>,</span>
                     <span class="author-block">
-                        <a href="" target="_blank">Ziqiao Ma</a><sup style="font-size: 0.8em;">△</sup>,
+                        <a href="" target="_blank">Ziqiao Ma</a><sup style="font-size: 0.8em;">♣</sup>,
                     </span>
                     <span class="author-block">
                         <a href="" target="_blank">Xiyao Wang</a><sup style="font-size: 0.8em;">△</sup>,
                     </span>
                     <span class="author-block">
-                        <a href="" target="_blank">Jiageng Mao</a><sup style="font-size: 0.8em;">△</sup>,
+                        <a href="" target="_blank">Jiageng Mao</a><sup style="font-size: 0.8em;">★</sup>,
                     </span>
                     <br>
                     <span class="author-block">
-                        <a href="" target="_blank">Jiuhai Chen</a><sup style="font-size: 0.8em;">♣</sup>,
+                        <a href="" target="_blank">Jiuhai Chen</a><sup style="font-size: 0.8em;">△</sup>,
                     </span>
                     <span class="author-block">
-                        <a href="" target="_blank">Jiatao Gu</a><sup style="font-size: 0.8em;">△</sup>,
+                        <a href="" target="_blank">Jiatao Gu</a><sup style="font-size: 0.8em;">▲</sup>,
                     </span>
                     <span class="author-block">
                         <a href="" target="_blank">Yue Wang</a><sup style="font-size: 0.8em;">★</sup>,
                     </span>
                     <span class="author-block">
-                        <a href="" target="_blank">Furong Huan</a><sup style="font-size: 0.8em;">△</sup>,
+                        <a href="" target="_blank">Furong Huang</a><sup style="font-size: 0.8em;">△</sup>,
                     </span>
                 </div>
 
@@ -384,7 +389,7 @@
                     <span class="author-block"><sup style="font-size: 0.8em;">♣</sup>University of Michigan</span>
                     <span class="author-block"><sup style="font-size: 0.8em;">♦</sup>The Hong Kong University of Science and
                         Technology</span>
-                    <span class="eql-cntrb"><small><br><sup>*</sup>Equal contribution.</small></span>
+                    <span class="eql-cntrb"><br><sup style="font-size: 0.8em;">*</sup>Equal contribution.</span>
                 </div>
 
                 <div class="button-container">
@@ -487,6 +492,507 @@
         </p>
 
         <hr>
+
+
+    <!-- ROVER Demo Section -->
+    <h1 class="text"><span class="rover-logo">
+        <span class="r1">R</span><span class="o">O</span><span class="v">V</span><span class="e">E</span><span class="r2">R</span>
+    </span> Demo</h1>
+    <div id="rover-demo" class="rover-demo">
+
+        <h3 class="main-title">Verbally-augmented Reasoning for Visual Generation</h3>
+
+        <div class="category-nav">
+            <button class="category-btn active" onclick="showCategory('natural-science')">Natural Science</button>
+            <button class="category-btn" onclick="showCategory('culture-art')">Culture and Art</button>
+            <button class="category-btn" onclick="showCategory('common-sense')">Common Sense</button>
+            <button class="category-btn" onclick="showCategory('logic')">Logic</button>
+        </div>
+    
+        <!-- Top Thumbnail Row -->
+        <div class="top-thumbnails">
+            <!-- Natural Science Thumbnails -->
+            <div id="natural-science-thumbnails" class="thumbnail-row">
+                <img class="top-thumbnail" src="./static/img/demo/science_1.jpg" alt="Natural Science 1" onclick="showDetail('natural-science', 'item1')">
+                <img class="top-thumbnail" src="./static/img/demo/science_2.jpg" alt="Natural Science 2" onclick="showDetail('natural-science', 'item2')">
+                <img class="top-thumbnail" src="./static/img/demo/science_3.jpg" alt="Natural Science 3" onclick="showDetail('natural-science', 'item3')">
+                <img class="top-thumbnail" src="./static/img/demo/science_4.jpg" alt="Natural Science 4" onclick="showDetail('natural-science', 'item4')">
+                <img class="top-thumbnail" src="./static/img/demo/science_5.jpg" alt="Natural Science 5" onclick="showDetail('natural-science', 'item5')">
+                <img class="top-thumbnail" src="./static/img/demo/science_6.jpg" alt="Natural Science 6" onclick="showDetail('natural-science', 'item6')">
+                <img class="top-thumbnail" src="./static/img/demo/science_7.jpg" alt="Natural Science 7" onclick="showDetail('natural-science', 'item7')">
+                <img class="top-thumbnail" src="./static/img/demo/science_8.jpg" alt="Natural Science 8" onclick="showDetail('natural-science', 'item8')">
+                <img class="top-thumbnail" src="./static/img/demo/science_9.jpg" alt="Natural Science 9" onclick="showDetail('natural-science', 'item9')">
+                <img class="top-thumbnail" src="./static/img/demo/science_10.jpg" alt="Natural Science 10" onclick="showDetail('natural-science', 'item10')">
+            </div>
+    
+            <!-- Culture and Art Thumbnails -->
+            <div id="culture-art-thumbnails" class="thumbnail-row" style="display: none;">
+                <img class="top-thumbnail" src="./static/img/demo/culture_1.jpg" alt="Culture 1" onclick="showDetail('culture-art', 'item1')">
+                <img class="top-thumbnail" src="./static/img/demo/culture_2.jpg" alt="Culture 2" onclick="showDetail('culture-art', 'item2')">
+                <img class="top-thumbnail" src="./static/img/demo/culture_3.jpg" alt="Culture 3" onclick="showDetail('culture-art', 'item3')">
+                <img class="top-thumbnail" src="./static/img/demo/culture_4.jpg" alt="Culture 4" onclick="showDetail('culture-art', 'item4')">
+                <img class="top-thumbnail" src="./static/img/demo/culture_5.jpg" alt="Culture 5" onclick="showDetail('culture-art', 'item5')">
+                <img class="top-thumbnail" src="./static/img/demo/culture_6.jpg" alt="Culture 6" onclick="showDetail('culture-art', 'item6')">
+                <img class="top-thumbnail" src="./static/img/demo/culture_7.jpg" alt="Culture 7" onclick="showDetail('culture-art', 'item7')">
+                <img class="top-thumbnail" src="./static/img/demo/culture_8.jpg" alt="Culture 8" onclick="showDetail('culture-art', 'item8')">
+                <img class="top-thumbnail" src="./static/img/demo/culture_9.jpg" alt="Culture 9" onclick="showDetail('culture-art', 'item9')">
+                <img class="top-thumbnail" src="./static/img/demo/culture_10.jpg" alt="Culture 10" onclick="showDetail('culture-art', 'item10')">
+            </div>
+    
+            <!-- Common Sense Thumbnails -->
+            <div id="common-sense-thumbnails" class="thumbnail-row" style="display: none;">
+                <img class="top-thumbnail" src="./static/img/demo/common_1.jpg" alt="Common Sense 1" onclick="showDetail('common-sense', 'item1')">
+                <img class="top-thumbnail" src="./static/img/demo/common_2.jpg" alt="Common Sense 2" onclick="showDetail('common-sense', 'item2')">
+                <img class="top-thumbnail" src="./static/img/demo/common_3.jpg" alt="Common Sense 3" onclick="showDetail('common-sense', 'item3')">
+                <img class="top-thumbnail" src="./static/img/demo/common_4.jpg" alt="Common Sense 4" onclick="showDetail('common-sense', 'item4')">
+                <img class="top-thumbnail" src="./static/img/demo/common_5.jpg" alt="Common Sense 5" onclick="showDetail('common-sense', 'item5')">
+                <img class="top-thumbnail" src="./static/img/demo/common_6.jpg" alt="Common Sense 6" onclick="showDetail('common-sense', 'item6')">
+                <img class="top-thumbnail" src="./static/img/demo/common_7.jpg" alt="Common Sense 7" onclick="showDetail('common-sense', 'item7')">
+                <img class="top-thumbnail" src="./static/img/demo/common_8.jpg" alt="Common Sense 8" onclick="showDetail('common-sense', 'item8')">
+                <img class="top-thumbnail" src="./static/img/demo/common_9.jpg" alt="Common Sense 9" onclick="showDetail('common-sense', 'item9')">
+                <img class="top-thumbnail" src="./static/img/demo/common_10.jpg" alt="Common Sense 10" onclick="showDetail('common-sense', 'item10')">
+            </div>
+    
+            <!-- Logic Thumbnails -->
+            <div id="logic-thumbnails" class="thumbnail-row" style="display: none;">
+                <img class="top-thumbnail" src="./static/img/demo/logic_1.jpg" alt="Logic 1" onclick="showDetail('logic', 'item1')">
+                <img class="top-thumbnail" src="./static/img/demo/logic_2.jpg" alt="Logic 2" onclick="showDetail('logic', 'item2')">
+                <img class="top-thumbnail" src="./static/img/demo/logic_3.jpg" alt="Logic 3" onclick="showDetail('logic', 'item3')">
+                <img class="top-thumbnail" src="./static/img/demo/logic_4.jpg" alt="Logic 4" onclick="showDetail('logic', 'item4')">
+                <img class="top-thumbnail" src="./static/img/demo/logic_5.jpg" alt="Logic 5" onclick="showDetail('logic', 'item5')">
+                <img class="top-thumbnail" src="./static/img/demo/logic_6.jpg" alt="Logic 6" onclick="showDetail('logic', 'item6')">
+                <img class="top-thumbnail" src="./static/img/demo/logic_7.jpg" alt="Logic 7" onclick="showDetail('logic', 'item7')">
+                <img class="top-thumbnail" src="./static/img/demo/logic_8.jpg" alt="Logic 8" onclick="showDetail('logic', 'item8')">
+                <img class="top-thumbnail" src="./static/img/demo/logic_9.jpg" alt="Logic 9" onclick="showDetail('logic', 'item9')">
+                <img class="top-thumbnail" src="./static/img/demo/logic_10.jpg" alt="Logic 10" onclick="showDetail('logic', 'item10')">
+            </div>
+        </div>
+    
+        <!-- Detail View - Always Visible -->
+        <div id="detail-view" class="detail-container">
+            <div class="detail-content">
+                <div class="left-panel">
+                    <div class="data-chart" id="data-chart">
+                        Original Data Chart Placeholder
+                    </div>
+                    
+                    <div class="prompt-section">
+                        <h3>Prompt:</h3>
+                        <div class="prompt-text" id="prompt-text">
+                            Generate a detailed scientific diagram showing the molecular structure of water, including accurate bond angles and electron cloud representations. Use clear labels and a clean, academic style suitable for a chemistry textbook.
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="right-panel">
+                    <div class="model-result">
+                        <div class="model-name nano">Nano Banana</div>
+                        <div class="generated-image" id="nano-result">
+                            Generated Image Placeholder
+                        </div>
+                    </div>
+    
+                    <div class="model-result">
+                        <div class="model-name gpt">GPT-5</div>
+                        <div class="generated-image" id="gpt-result">
+                            Generated Image Placeholder
+                        </div>
+                    </div>
+    
+                    <div class="model-result">
+                        <div class="model-name bagel">BAGEL-Think</div>
+                        <div class="generated-image" id="bagel-result">
+                            Generated Image Placeholder
+                        </div>
+                    </div>
+    
+                    <div class="model-result">
+                        <div class="model-name qwen">Qwen-Image</div>
+                        <div class="generated-image" id="qwen-result">
+                            Generated Image Placeholder
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <script>
+            let currentCategory = 'natural-science';
+            
+            // Sample data for different categories and items
+            const sampleData = {
+                'natural-science': {
+                    'item1': {
+                        chart: './static/img/demo/science_1.jpg',
+                        prompt: 'What this methylene blue and titanium dioxide solution will look like after 30 minutes under UV light exposure.',
+                        nano: './static/img/nano/science_1.png',
+                        gpt: './static/img/gpt/science_1.png',
+                        bagel: './static/img/bagel/science_1.png',
+                        qwen: './static/img/qwen/science_1.png'
+                    },
+                    'item2': {
+                        chart: './static/img/demo/science_2.jpg',
+                        prompt: 'What will these iron nails look like after soaking in 3% saltwater for 4 hours?',
+                        nano: './static/img/nano/science_2.png',
+                        gpt: './static/img/gpt/science_2.png',
+                        bagel: './static/img/bagel/science_2.png',
+                        qwen: './static/img/qwen/science_2.png'
+                    },
+                    'item3': {
+                        chart: './static/img/demo/science_3.jpg',
+                        prompt: 'Show what these two candles will look like after 2 hours, with the left candle in normal air and the right candle partially enclosed to restrict airflow.',
+                        nano: './static/img/nano/science_3.png',
+                        gpt: './static/img/gpt/science_3.png',
+                        bagel: './static/img/bagel/science_3.png',
+                        qwen: './static/img/qwen/science_3.png'
+                    },
+                    'item4': {
+                        chart: './static/img/demo/science_4.jpg',
+                        prompt: 'Generate what happens when a beam of white light passes through this triangular glass prism.',
+                        nano: './static/img/nano/science_4.png',
+                        gpt: './static/img/gpt/science_4.png',
+                        bagel: './static/img/bagel/science_4.png',
+                        qwen: './static/img/qwen/science_4.png'
+                    },
+                    'item5': {
+                        chart: './static/img/demo/science_5.jpg',
+                        prompt: 'Predict the visual effect when this glass is replaced with a concave lens of the same size.',
+                        nano: './static/img/nano/science_5.png',
+                        gpt: './static/img/gpt/science_5.png',
+                        bagel: './static/img/bagel/science_5.png',
+                        qwen: './static/img/qwen/science_5.png'
+                    },
+                    'item6': {
+                        chart: './static/img/demo/science_6.jpg',
+                        prompt: 'Predict what happens when one wooden block is removed from the third layer (counting from bottom) of this tower.',
+                        nano: './static/img/nano/science_6.png',
+                        gpt: './static/img/gpt/science_6.png',
+                        bagel: './static/img/bagel/science_6.png',
+                        qwen: './static/img/qwen/science_6.png'
+                    },
+                    'item7': {
+                        chart: './static/img/demo/science_7.jpg',
+                        prompt: 'Predict how this leaf cross-section would look after the leaf has undergone severe drought stress that causes plasmolysis in the mesophyll cells.',
+                        nano: './static/img/nano/science_7.png',
+                        gpt: './static/img/gpt/science_7.png',
+                        bagel: './static/img/bagel/science_7.png',
+                        qwen: './static/img/qwen/science_7.png'
+                    },
+                    'item8': {
+                        chart: './static/img/demo/science_8.jpg',
+                        prompt: 'Predict what the plastic water bottle will look like after being left half-full, capped tightly, and placed in a freezer overnight.',
+                        nano: './static/img/nano/science_8.png',
+                        gpt: './static/img/gpt/science_8.png',
+                        bagel: './static/img/bagel/science_8.png',
+                        qwen: './static/img/qwen/science_8.png'
+                    },
+                    'item9': {
+                        chart: './static/img/demo/science_9.jpg',
+                        prompt: 'What this preserved microscopic specimen would look like as a living organism in its natural environment.',
+                        nano: './static/img/nano/science_9.png',
+                        gpt: './static/img/gpt/science_9.png',
+                        bagel: './static/img/bagel/science_9.png',
+                        qwen: './static/img/qwen/science_9.png'
+                    },  
+                    'item10': {
+                        chart: './static/img/demo/science_10.jpg',
+                        prompt: 'Generate this garden scene with yellow flowers increased to match the number of red flowers.',
+                        nano: './static/img/nano/science_10.png',
+                        gpt: './static/img/gpt/science_10.png',
+                        bagel: './static/img/bagel/science_10.png',
+                        qwen: './static/img/qwen/science_10.png'
+                    }
+                },
+                'culture-art': {
+                    'item1': {
+                        chart: './static/img/demo/culture_1.png',
+                        prompt: 'Create a Renaissance-style painting depicting a modern scene of people using smartphones in a classical Italian piazza. Blend historical artistic techniques with contemporary subject matter.',
+                        nano: './static/img/nano/nano_culture_1.png',
+                        gpt: './static/img/gpt/gpt_culture_1.png',
+                        bagel: './static/img/bagel/bagel_culture_1.png',
+                        qwen: './static/img/qwen/qwen_culture_1.png'
+                    },
+                    'item2': {
+                        chart: './static/img/demo/culture_2.png',
+                        prompt: 'Design a traditional Japanese woodblock print showing a bullet train crossing Mount Fuji. Combine Hokusai-inspired artistic style with modern transportation elements.',
+                        nano: './static/img/nano/nano_culture_2.png',
+                        gpt: './static/img/gpt/gpt_culture_2.png',
+                        bagel: './static/img/bagel/bagel_culture_2.png',
+                        qwen: './static/img/qwen/qwen_culture_2.png'
+                    },
+                    'item3': {
+                        chart: './static/img/demo/culture_3.png',
+                        prompt: 'Create a Renaissance-style painting depicting a modern scene of people using smartphones in a classical Italian piazza. Blend historical artistic techniques with contemporary subject matter.',
+                        nano: './static/img/nano/nano_culture_3.png',
+                        gpt: './static/img/gpt/gpt_culture_3.png',
+                        bagel: './static/img/bagel/bagel_culture_3.png',
+                        qwen: './static/img/qwen/qwen_culture_3.png'
+                    },
+                    'item4': {
+                        chart: './static/img/demo/culture_4.png',
+                        prompt: 'Create a Renaissance-style painting depicting a modern scene of people using smartphones in a classical Italian piazza. Blend historical artistic techniques with contemporary subject matter.',
+                        nano: './static/img/nano/nano_culture_4.png',
+                        gpt: './static/img/gpt/gpt_culture_4.png',
+                        bagel: './static/img/bagel/bagel_culture_4.png',
+                        qwen: './static/img/qwen/qwen_culture_4.png'
+                    },
+                    'item5': {
+                        chart: './static/img/demo/culture_5.png',
+                        prompt: 'Create a Renaissance-style painting depicting a modern scene of people using smartphones in a classical Italian piazza. Blend historical artistic techniques with contemporary subject matter.',
+                        nano: './static/img/nano/nano_culture_5.png',
+                        gpt: './static/img/gpt/gpt_culture_5.png',
+                        bagel: './static/img/bagel/bagel_culture_5.png',
+                        qwen: './static/img/qwen/qwen_culture_5.png'
+                    },
+                    'item6': {
+                        chart: './static/img/demo/culture_6.png',
+                        prompt: 'Create a Renaissance-style painting depicting a modern scene of people using smartphones in a classical Italian piazza. Blend historical artistic techniques with contemporary subject matter.',
+                        nano: './static/img/nano/nano_culture_6.png',
+                        gpt: './static/img/gpt/gpt_culture_6.png',
+                        bagel: './static/img/bagel/bagel_culture_6.png',
+                        qwen: './static/img/qwen/qwen_culture_6.png'
+                    },
+                    'item7': {
+                        chart: './static/img/demo/culture_7.png',
+                        prompt: 'Create a Renaissance-style painting depicting a modern scene of people using smartphones in a classical Italian piazza. Blend historical artistic techniques with contemporary subject matter.',
+                        nano: './static/img/nano/nano_culture_7.png',
+                        gpt: './static/img/gpt/gpt_culture_7.png',
+                        bagel: './static/img/bagel/bagel_culture_7.png',
+                        qwen: './static/img/qwen/qwen_culture_7.png'
+                    },
+                    'item8': {
+                        chart: './static/img/demo/culture_8.png',
+                        prompt: 'Create a Renaissance-style painting depicting a modern scene of people using smartphones in a classical Italian piazza. Blend historical artistic techniques with contemporary subject matter.',
+                        nano: './static/img/nano/nano_culture_8.png',
+                        gpt: './static/img/gpt/gpt_culture_8.png',
+                        bagel: './static/img/bagel/bagel_culture_8.png',
+                        qwen: './static/img/qwen/qwen_culture_8.png'
+                    },
+                    'item9': {
+                        chart: './static/img/demo/culture_9.png',
+                        prompt: 'Create a Renaissance-style painting depicting a modern scene of people using smartphones in a classical Italian piazza. Blend historical artistic techniques with contemporary subject matter.',
+                        nano: './static/img/nano/nano_culture_9.png',
+                        gpt: './static/img/gpt/gpt_culture_9.png',
+                        bagel: './static/img/bagel/bagel_culture_9.png',
+                        qwen: './static/img/qwen/qwen_culture_9.png'
+                    },
+                    'item10': {
+                        chart: './static/img/demo/culture_10.png',
+                        prompt: 'Create a Renaissance-style painting depicting a modern scene of people using smartphones in a classical Italian piazza. Blend historical artistic techniques with contemporary subject matter.',
+                        nano: './static/img/nano/nano_culture_10.png',
+                        gpt: './static/img/gpt/gpt_culture_10.png',
+                        bagel: './static/img/bagel/bagel_culture_10.png',
+                        qwen: './static/img/qwen/qwen_culture_10.png'
+                    }
+                },
+                'common-sense': {
+                    'item1': {
+                        chart: './static/img/demo/common_1.png',
+                        prompt: 'Illustrate the proper way to pack a suitcase for a week-long trip, showing efficient use of space and organization of different types of clothing and accessories.',
+                        nano: './static/img/nano/nano_common_1.png',
+                        gpt: './static/img/gpt/gpt_common_1.png',
+                        bagel: './static/img/bagel/bagel_common_1.png',
+                        qwen: './static/img/qwen/qwen_common_1.png'
+                    },
+                    'item2': {
+                        chart: './static/img/demo/common_2.png',
+                        prompt: 'Show the step-by-step process of safely crossing a busy street, including looking both ways, using crosswalks, and timing with traffic signals.',
+                        nano: './static/img/nano/nano_common_2.png',
+                        gpt: './static/img/gpt/gpt_common_2.png',
+                        bagel: './static/img/bagel/bagel_common_2.png',
+                        qwen: './static/img/qwen/qwen_common_2.png'
+                    },
+                    'item3': {
+                        chart: './static/img/demo/common_3.png',
+                        prompt: 'Show the step-by-step process of safely crossing a busy street, including looking both ways, using crosswalks, and timing with traffic signals.',
+                        nano: './static/img/nano/nano_common_3.png',
+                        gpt: './static/img/gpt/gpt_common_3.png',
+                        bagel: './static/img/bagel/bagel_common_3.png',
+                        qwen: './static/img/qwen/qwen_common_3.png'
+                    },
+                    'item4': {
+                        chart: './static/img/demo/common_4.png',
+                        prompt: 'Show the step-by-step process of safely crossing a busy street, including looking both ways, using crosswalks, and timing with traffic signals.',
+                        nano: './static/img/nano/nano_common_4.png',
+                        gpt: './static/img/gpt/gpt_common_4.png',
+                        bagel: './static/img/bagel/bagel_common_4.png',
+                        qwen: './static/img/qwen/qwen_common_4.png'
+                    },
+                    'item5': {
+                        chart: './static/img/demo/common_5.png',
+                        prompt: 'Show the step-by-step process of safely crossing a busy street, including looking both ways, using crosswalks, and timing with traffic signals.',
+                        nano: './static/img/nano/nano_common_5.png',
+                        gpt: './static/img/gpt/gpt_common_5.png',
+                        bagel: './static/img/bagel/bagel_common_5.png',
+                        qwen: './static/img/qwen/qwen_common_5.png'
+                    },
+                    'item6': {
+                        chart: './static/img/demo/common_6.png',
+                        prompt: 'Show the step-by-step process of safely crossing a busy street, including looking both ways, using crosswalks, and timing with traffic signals.',
+                        nano: './static/img/nano/nano_common_6.png',
+                        gpt: './static/img/gpt/gpt_common_6.png',
+                        bagel: './static/img/bagel/bagel_common_6.png',
+                        qwen: './static/img/qwen/qwen_common_6.png'
+                    },
+                    'item7': {
+                        chart: './static/img/demo/common_7.png',
+                        prompt: 'Show the step-by-step process of safely crossing a busy street, including looking both ways, using crosswalks, and timing with traffic signals.',
+                        nano: './static/img/nano/nano_common_7.png',
+                        gpt: './static/img/gpt/gpt_common_7.png',
+                        bagel: './static/img/bagel/bagel_common_7.png',
+                        qwen: './static/img/qwen/qwen_common_7.png'
+                    },
+                    'item8': {
+                        chart: './static/img/demo/common_8.png',
+                        prompt: 'Show the step-by-step process of safely crossing a busy street, including looking both ways, using crosswalks, and timing with traffic signals.',
+                        nano: './static/img/nano/nano_common_8.png',
+                        gpt: './static/img/gpt/gpt_common_8.png',
+                        bagel: './static/img/bagel/bagel_common_8.png',
+                        qwen: './static/img/qwen/qwen_common_8.png'
+                    },
+                    'item9': {
+                        chart: './static/img/demo/common_9.png',
+                        prompt: 'Show the step-by-step process of safely crossing a busy street, including looking both ways, using crosswalks, and timing with traffic signals.',
+                        nano: './static/img/nano/nano_common_9.png',
+                        gpt: './static/img/gpt/gpt_common_9.png',
+                        bagel: './static/img/bagel/bagel_common_9.png',
+                        qwen: './static/img/qwen/qwen_common_9.png'
+                    },
+                    'item10': {
+                        chart: './static/img/demo/common_10.png',
+                        prompt: 'Show the step-by-step process of safely crossing a busy street, including looking both ways, using crosswalks, and timing with traffic signals.',
+                        nano: './static/img/nano/nano_common_10.png',
+                        gpt: './static/img/gpt/gpt_common_10.png',
+                        bagel: './static/img/bagel/bagel_common_10.png',
+                        qwen: './static/img/qwen/qwen_common_10.png'
+                    }
+                },
+                'logic': {
+                    'item1': {
+                        chart: './static/img/demo/logic_1.png',
+                        prompt: 'Create a visual representation of a logical syllogism: "All birds can fly. Penguins are birds. Therefore, penguins can fly." Show why this conclusion is flawed using diagrams and counter-examples.',
+                        nano: './static/img/nano/nano_logic_1.png',
+                        gpt: './static/img/gpt/gpt_logic_1.png',
+                        bagel: './static/img/bagel/bagel_logic_1.png',
+                        qwen: './static/img/qwen/qwen_logic_1.png'
+                    },
+                    'item2': {
+                        chart: './static/img/demo/logic_2.png',
+                        prompt: 'Illustrate the concept of logical fallacies using visual examples, specifically showing "correlation vs causation" with clear graphs and explanatory text.',
+                        nano: './static/img/nano/nano_lo    gic_2.png',
+                        gpt: './static/img/gpt/gpt_logic_2.png',
+                        bagel: './static/img/bagel/bagel_logic_2.png',
+                        qwen: './static/img/qwen/qwen_logic_2.png'
+                    },
+                    'item3': {
+                        chart: './static/img/demo/logic_3.png',
+                        prompt: 'Illustrate the concept of logical fallacies using visual examples, specifically showing "correlation vs causation" with clear graphs and explanatory text.',
+                        nano: './static/img/nano/nano_logic_3.png',
+                        gpt: './static/img/gpt/gpt_logic_3.png',
+                        bagel: './static/img/bagel/bagel_logic_3.png',
+                        qwen: './static/img/qwen/qwen_logic_3.png'
+                    },
+                    'item4': {
+                        chart: './static/img/demo/logic_4.png',
+                        prompt: 'Illustrate the concept of logical fallacies using visual examples, specifically showing "correlation vs causation" with clear graphs and explanatory text.',
+                        nano: './static/img/nano/nano_logic_4.png',
+                        gpt: './static/img/gpt/gpt_logic_4.png',
+                        bagel: './static/img/bagel/bagel_logic_4.png',
+                        qwen: './static/img/qwen/qwen_logic_4.png'
+                    },
+                    'item5': {
+                        chart: './static/img/demo/logic_5.png',
+                        prompt: 'Illustrate the concept of logical fallacies using visual examples, specifically showing "correlation vs causation" with clear graphs and explanatory text.',
+                        nano: './static/img/nano/nano_logic_5.png',
+                        gpt: './static/img/gpt/gpt_logic_5.png',
+                        bagel: './static/img/bagel/bagel_logic_5.png',
+                        qwen: './static/img/qwen/qwen_logic_5.png'
+                    },
+                    'item6': {
+                        chart: './static/img/demo/logic_6.png',
+                        prompt: 'Illustrate the concept of logical fallacies using visual examples, specifically showing "correlation vs causation" with clear graphs and explanatory text.',
+                        nano: './static/img/nano/nano_logic_6.png',
+                        gpt: './static/img/gpt/gpt_logic_6.png',
+                        bagel: './static/img/bagel/bagel_logic_6.png',
+                        qwen: './static/img/qwen/qwen_logic_6.png'
+                    },
+                    'item7': {
+                        chart: './static/img/demo/logic_7.png',
+                        prompt: 'Illustrate the concept of logical fallacies using visual examples, specifically showing "correlation vs causation" with clear graphs and explanatory text.',
+                        nano: './static/img/nano/nano_logic_7.png',
+                        gpt: './static/img/gpt/gpt_logic_7.png',
+                        bagel: './static/img/bagel/bagel_logic_7.png',
+                        qwen: './static/img/qwen/qwen_logic_7.png'
+                    },
+                    'item8': {
+                        chart: './static/img/demo/logic_8.png',
+                        prompt: 'Illustrate the concept of logical fallacies using visual examples, specifically showing "correlation vs causation" with clear graphs and explanatory text.',
+                        nano: './static/img/nano/nano_logic_8.png',
+                        gpt: './static/img/gpt/gpt_logic_8.png',
+                        bagel: './static/img/bagel/bagel_logic_8.png',
+                        qwen: './static/img/qwen/qwen_logic_8.png'
+                    },
+                    'item9': {
+                        chart: './static/img/demo/logic_9.png',
+                        prompt: 'Illustrate the concept of logical fallacies using visual examples, specifically showing "correlation vs causation" with clear graphs and explanatory text.',
+                        nano: './static/img/nano/nano_logic_9.png',
+                        gpt: './static/img/gpt/gpt_logic_9.png',
+                        bagel: './static/img/bagel/bagel_logic_9.png',
+                        qwen: './static/img/qwen/qwen_logic_9.png'
+                    },
+                    'item10': {
+                        chart: './static/img/demo/logic_10.png',
+                        prompt: 'Illustrate the concept of logical fallacies using visual examples, specifically showing "correlation vs causation" with clear graphs and explanatory text.',
+                        nano: './static/img/nano/nano_logic_10.png',
+                        gpt: './static/img/gpt/gpt_logic_10.png',
+                        bagel: './static/img/bagel/bagel_logic_10.png',
+                        qwen: './static/img/qwen/qwen_logic_10.png'
+                    }
+                }
+            };
+    
+            function showCategory(category) {
+    // Hide all thumbnail rows
+                document.querySelectorAll('.thumbnail-row').forEach(container => {
+                    container.style.display = 'none';
+                });
+                
+                // Show selected category
+                document.getElementById(category + '-thumbnails').style.display = 'flex';
+                
+                // Update active button
+                document.querySelectorAll('.category-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                event.target.classList.add('active');
+                
+                currentCategory = category;
+                
+                // Load first item of the category by default
+                showDetail(category, 'item1');
+            }
+
+            function showDetail(category, item) {
+                // Update content based on selected item
+                const data = sampleData[category] && sampleData[category][item];
+                if (data) {
+                    document.getElementById('data-chart').innerHTML = `<img src="${data.chart}" alt="Data Chart" style="max-width: 100%; max-height: 100%; object-fit: contain;">`;
+                    document.getElementById('prompt-text').textContent = data.prompt;
+                    document.getElementById('nano-result').innerHTML = `<img src="${data.nano}" alt="Nano Banana Result" style="max-width: 100%; max-height: 100%; object-fit: contain;">`;
+                    document.getElementById('gpt-result').innerHTML = `<img src="${data.gpt}" alt="GPT Result" style="max-width: 100%; max-height: 100%; object-fit: contain;">`;
+                    document.getElementById('bagel-result').innerHTML = `<img src="${data.bagel}" alt="BAGEL-Think Result" style="max-width: 100%; max-height: 100%; object-fit: contain;">`;
+                    document.getElementById('qwen-result').innerHTML = `<img src="${data.qwen}" alt="Qwen-Image Result" style="max-width: 100%; max-height: 100%; object-fit: contain;">`;
+                }
+            }
+    
+            function backToThumbnails() {
+                document.getElementById('detail-view').style.display = 'none';
+                document.getElementById(currentCategory + '-thumbnails').style.display = 'grid';
+            }
+            showDetail('natural-science', 'item1');
+        </script>
+    </div>
+
 
         <!-- ROVER Benchmark Section -->
         <div id='rover-benchmark' class="rover-benchmark">
