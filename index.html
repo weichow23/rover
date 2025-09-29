@@ -9,7 +9,7 @@
     
     <!-- Meta Tags -->
     <meta property="og:url" content="https://vision-x-nyu.github.io/thinking-in-space.github.io/" />
-    <meta property="og:image" content="./static/img/preview.png" />
+    <meta property="og:image" content="./static/img/icons/logo.png" />
     <meta property="og:title" content="Thinking in Space: How Multimodal Large Language Models See, Remember and Recall Spaces" />
     
     <meta name="twitter:url" content="https://vision-x-nyu.github.io/thinking-in-space.github.io/" />
@@ -19,7 +19,7 @@
 
     <!-- Preload critical resources -->
     <link rel="preload" href="./static/css/style.css" as="style">
-    <link rel="preload" href="./static/img/preview.png" as="image">
+    <link rel="preload" href="./static/img/icons/logo.png" as="image">
     <link rel="preconnect" href="https://polyfill.io">
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link rel="preconnect" href="https://d3js.org">
@@ -487,7 +487,7 @@
             </a>
             <a href="#experimental-results" class="icon-link">
                 <img src="./static/img/icons/speech.svg" alt="Results Logo" class="icon" loading="lazy">
-                Experimental<br>Results
+                Main<br>Results
             </a>
             <a href="#analysis-insights" class="icon-link">
                 <img src="./static/img/icons/vision.svg" alt="Analysis Logo" class="icon" loading="lazy">
@@ -1364,9 +1364,9 @@
             </div>
         </div>
 
-        <!-- Experimental Results Section -->
+        <!-- Main Results Section -->
         <div id='experimental-results' class="experimental-results">
-            <h1 class="text">Experimental Results</h1>
+            <h1 class="text">Main Results</h1>
                 
             <p class="text" align="justify">
                 We conducted comprehensive evaluation of 17 state-of-the-art unified multimodal models across both settings in <span class="rover-logo">
@@ -1379,28 +1379,10 @@
                 Cross-modal reasoning capabilities and alignment strongly correlate with visual generation effectiveness. Closed-source models excel in reasoning processes and demonstrate strong alignment performance, directly contributing to superior visual generation quality. Open-source models show notably weaker verbal reasoning during visual generation tasks—their reasoning processes are approximately 38% lower and alignment performance falls about 31% short of closed-source models, translating into correspondingly diminished visual generation performance.
             </p>
 
-            <d-figure id="fig-evaluation-results">
-                <figure>
-                    <img data-zoomable="" draggable="false" src="static/img/eval1.png" alt="Evaluation Results" loading="lazy">
-                    <figcaption style="text-align: center; margin-top: 20px;">
-                        <strong>Table 1</strong>: Evaluation results on verbally-augmented reasoning for visual generation across different unified multimodal models.
-                    </figcaption>
-                </figure>
-            </d-figure>
-
             <p class="text" align="justify">
                 <strong>Visually-Augmented Verbal Generation Results</strong>:
                 Current unified models exhibit limited capacity in interleaved reasoning, constraining their ability to leverage cross-modal reasoning for improved performance. Even the best-performing models struggle with interleaved reasoning processes, with the highest average Interleaved Reasoning (IR) score reaching only 39.5% overall. Models demonstrate superior performance on physical world modeling and visual perception tasks compared to logical reasoning challenges, indicating that perception over pixels transfers more readily than acquisition of abstract visual concepts.
             </p>
-            
-            <d-figure id="fig-interleaved-results">
-                <figure>
-                    <img data-zoomable="" draggable="false" src="static/img/eval2.png" alt="Interleaved Results" loading="lazy">
-                    <figcaption style="text-align: center; margin-top: 20px;">
-                        <strong>Table 2</strong>: Evaluation results on visually-augmented reasoning for verbal generation showing limited interleaved reasoning capabilities.
-                    </figcaption>
-                </figure>
-            </d-figure>
 
             <div class="highlight-box">
                 <em>Key Finding 1: Cross-modal reasoning capabilities strongly correlate with visual generation performance, particularly for interleaved image-text generation.</em>
