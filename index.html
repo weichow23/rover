@@ -38,7 +38,6 @@
         .button-container { display: flex; gap: 1rem; margin-top: 1rem; flex-wrap: wrap; }
         .button { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1rem; background: #3182ce; color: white; text-decoration: none; border-radius: 0.375rem; transition: background-color 0.2s; }
         .button:hover { background: #7150cd; }
-        
         /* Basic Styles */
         pre, code { font-size: 16px; }
 
@@ -79,7 +78,7 @@
             text-align: justify;
             margin-top: 15px;
             padding: 0 20px;
-            max-width: 1000px;
+            /* max-width: 1000px; */ /* Removed max-width constraint */
             margin-left: auto;
             margin-right: auto;
         }
@@ -523,6 +522,8 @@
                 <img class="top-thumbnail" src="./static/img/demo/science_8.jpg" alt="Natural Science 8" onclick="showDetail('natural-science', 'item8')">
                 <img class="top-thumbnail" src="./static/img/demo/science_9.jpg" alt="Natural Science 9" onclick="showDetail('natural-science', 'item9')">
                 <img class="top-thumbnail" src="./static/img/demo/science_10.jpg" alt="Natural Science 10" onclick="showDetail('natural-science', 'item10')">
+                <img class="top-thumbnail" src="./static/img/demo/science_11.jpg" alt="Natural Science 11" onclick="showDetail('natural-science', 'item11')">
+                <img class="top-thumbnail" src="./static/img/demo/science_12.jpg" alt="Natural Science 12" onclick="showDetail('natural-science', 'item12')">
             </div>
     
             <!-- Culture and Art Thumbnails -->
@@ -537,6 +538,8 @@
                 <img class="top-thumbnail" src="./static/img/demo/culture_8.jpg" alt="Culture 8" onclick="showDetail('culture-art', 'item8')">
                 <img class="top-thumbnail" src="./static/img/demo/culture_9.jpg" alt="Culture 9" onclick="showDetail('culture-art', 'item9')">
                 <img class="top-thumbnail" src="./static/img/demo/culture_10.jpg" alt="Culture 10" onclick="showDetail('culture-art', 'item10')">
+                <img class="top-thumbnail" src="./static/img/demo/culture_11.jpg" alt="Culture 11" onclick="showDetail('culture-art', 'item11')">
+                <img class="top-thumbnail" src="./static/img/demo/culture_12.jpg" alt="Culture 12" onclick="showDetail('culture-art', 'item12')">
             </div>
     
             <!-- Common Sense Thumbnails -->
@@ -624,6 +627,7 @@
                 'natural-science': {
                     'item1': {
                         chart: './static/img/demo/science_1.jpg',
+                        reasoning_type: 'Temporal',
                         prompt: 'What this methylene blue and titanium dioxide solution will look like after 30 minutes under UV light exposure.',
                         nano: './static/img/nano/science_1.png',
                         gpt: './static/img/gpt/science_1.png',
@@ -632,6 +636,7 @@
                     },
                     'item2': {
                         chart: './static/img/demo/science_2.jpg',
+                        reasoning_type: 'Temporal',
                         prompt: 'What will these iron nails look like after soaking in 3% saltwater for 4 hours?',
                         nano: './static/img/nano/science_2.png',
                         gpt: './static/img/gpt/science_2.png',
@@ -640,6 +645,7 @@
                     },
                     'item3': {
                         chart: './static/img/demo/science_3.jpg',
+                        reasoning_type: 'Temporal',
                         prompt: 'Show what these two candles will look like after 2 hours, with the left candle in normal air and the right candle partially enclosed to restrict airflow.',
                         nano: './static/img/nano/science_3.png',
                         gpt: './static/img/gpt/science_3.png',
@@ -648,6 +654,7 @@
                     },
                     'item4': {
                         chart: './static/img/demo/science_4.jpg',
+                        reasoning_type: 'Spatial',
                         prompt: 'Generate what happens when a beam of white light passes through this triangular glass prism.',
                         nano: './static/img/nano/science_4.png',
                         gpt: './static/img/gpt/science_4.png',
@@ -656,6 +663,7 @@
                     },
                     'item5': {
                         chart: './static/img/demo/science_5.jpg',
+                        reasoning_type: 'Spatial',
                         prompt: 'Predict the visual effect when this glass is replaced with a concave lens of the same size.',
                         nano: './static/img/nano/science_5.png',
                         gpt: './static/img/gpt/science_5.png',
@@ -664,6 +672,7 @@
                     },
                     'item6': {
                         chart: './static/img/demo/science_6.jpg',
+                        reasoning_type: 'Causal',
                         prompt: 'Predict what happens when one wooden block is removed from the third layer (counting from bottom) of this tower.',
                         nano: './static/img/nano/science_6.png',
                         gpt: './static/img/gpt/science_6.png',
@@ -672,6 +681,7 @@
                     },
                     'item7': {
                         chart: './static/img/demo/science_7.jpg',
+                        reasoning_type: 'Causal',
                         prompt: 'Predict how this leaf cross-section would look after the leaf has undergone severe drought stress that causes plasmolysis in the mesophyll cells.',
                         nano: './static/img/nano/science_7.png',
                         gpt: './static/img/gpt/science_7.png',
@@ -680,6 +690,7 @@
                     },
                     'item8': {
                         chart: './static/img/demo/science_8.jpg',
+                        reasoning_type: 'Causal',
                         prompt: 'Predict what the plastic water bottle will look like after being left half-full, capped tightly, and placed in a freezer overnight.',
                         nano: './static/img/nano/science_8.png',
                         gpt: './static/img/gpt/science_8.png',
@@ -688,6 +699,7 @@
                     },
                     'item9': {
                         chart: './static/img/demo/science_9.jpg',
+                        reasoning_type: 'Synthetic',
                         prompt: 'What this preserved microscopic specimen would look like as a living organism in its natural environment.',
                         nano: './static/img/nano/science_9.png',
                         gpt: './static/img/gpt/science_9.png',
@@ -696,93 +708,140 @@
                     },  
                     'item10': {
                         chart: './static/img/demo/science_10.jpg',
+                        reasoning_type: 'Quantitative',
                         prompt: 'Generate this garden scene with yellow flowers increased to match the number of red flowers.',
                         nano: './static/img/nano/science_10.png',
                         gpt: './static/img/gpt/science_10.png',
                         bagel: './static/img/bagel/science_10.png',
                         qwen: './static/img/qwen/science_10.png'
+                    },
+                    'item11': {
+                        chart: './static/img/demo/science_11.jpg',
+                        reasoning_type: 'Synthetic',
+                        prompt: 'Generate what this pressed botanical specimen would look like as a living plant in its natural state.',
+                        nano: './static/img/nano/science_11.png',
+                        gpt: './static/img/gpt/science_11.png',
+                        bagel: './static/img/bagel/science_11.png',
+                        qwen: './static/img/qwen/science_11.png'
+                    },
+                    'item12': {
+                        chart: './static/img/demo/science_12.jpg',
+                        reasoning_type: 'Quantitative',
+                        prompt: 'Generate this scene with 3 total insects of the same type feeding on different flowers.',
+                        nano: './static/img/nano/science_12.png',
+                        gpt: './static/img/gpt/science_12.png',
+                        bagel: './static/img/bagel/science_12.png',
+                        qwen: './static/img/qwen/science_12.png'
                     }
                 },
                 'culture-art': {
                     'item1': {
-                        chart: './static/img/demo/culture_1.png',
-                        prompt: 'Create a Renaissance-style painting depicting a modern scene of people using smartphones in a classical Italian piazza. Blend historical artistic techniques with contemporary subject matter.',
-                        nano: './static/img/nano/nano_culture_1.png',
-                        gpt: './static/img/gpt/gpt_culture_1.png',
-                        bagel: './static/img/bagel/bagel_culture_1.png',
-                        qwen: './static/img/qwen/qwen_culture_1.png'
+                        chart: './static/img/demo/culture_1.jpg',
+                        reasoning_type: 'Temporal',
+                        prompt: 'Show this floral arrangement after the flowers have wilted and faded in oil painting style.',
+                        nano: './static/img/nano/culture_1.png',
+                        gpt: './static/img/gpt/culture_1.png',
+                        bagel: './static/img/bagel/culture_1.png',
+                        qwen: './static/img/qwen/culture_1.png'
                     },
                     'item2': {
-                        chart: './static/img/demo/culture_2.png',
-                        prompt: 'Design a traditional Japanese woodblock print showing a bullet train crossing Mount Fuji. Combine Hokusai-inspired artistic style with modern transportation elements.',
-                        nano: './static/img/nano/nano_culture_2.png',
-                        gpt: './static/img/gpt/gpt_culture_2.png',
-                        bagel: './static/img/bagel/bagel_culture_2.png',
-                        qwen: './static/img/qwen/qwen_culture_2.png'
+                        chart: './static/img/demo/culture_2.jpg',
+                        reasoning_type: 'Temporal',
+                        prompt: 'Show this woman as she would appear 30 years later while maintaining the portrait style and setting.',
+                        nano: './static/img/nano/culture_2.png',
+                        gpt: './static/img/gpt/culture_2.png',
+                        bagel: './static/img/bagel/culture_2.png',
+                        qwen: './static/img/qwen/culture_2.png'
                     },
                     'item3': {
-                        chart: './static/img/demo/culture_3.png',
-                        prompt: 'Create a Renaissance-style painting depicting a modern scene of people using smartphones in a classical Italian piazza. Blend historical artistic techniques with contemporary subject matter.',
-                        nano: './static/img/nano/nano_culture_3.png',
-                        gpt: './static/img/gpt/gpt_culture_3.png',
-                        bagel: './static/img/bagel/bagel_culture_3.png',
-                        qwen: './static/img/qwen/qwen_culture_3.png'
+                        chart: './static/img/demo/culture_3.jpg',
+                        reasoning_type: 'Spatial',
+                        prompt: 'Show the front entrance view of the tower building on the right while preserving the winter painting style',
+                        nano: './static/img/nano/culture_3.png',
+                        gpt: './static/img/gpt/culture_3.png',
+                        bagel: './static/img/bagel/culture_3.png',
+                        qwen: './static/img/qwen/culture_3.png'
                     },
                     'item4': {
-                        chart: './static/img/demo/culture_4.png',
-                        prompt: 'Create a Renaissance-style painting depicting a modern scene of people using smartphones in a classical Italian piazza. Blend historical artistic techniques with contemporary subject matter.',
-                        nano: './static/img/nano/nano_culture_4.png',
-                        gpt: './static/img/gpt/gpt_culture_4.png',
-                        bagel: './static/img/bagel/bagel_culture_4.png',
-                        qwen: './static/img/qwen/qwen_culture_4.png'
+                        chart: './static/img/demo/culture_4.jpg',
+                        reasoning_type: 'Spatial',
+                        prompt: 'From the viewpoint of a person seated in a small wooden barge directly beneath the central arch of the bridge, generate the water-level scene looking outward.',
+                        nano: './static/img/nano/culture_4.png',
+                        gpt: './static/img/gpt/culture_4.png',
+                        bagel: './static/img/bagel/culture_4.png',
+                        qwen: './static/img/qwen/culture_4.png'
                     },
                     'item5': {
-                        chart: './static/img/demo/culture_5.png',
-                        prompt: 'Create a Renaissance-style painting depicting a modern scene of people using smartphones in a classical Italian piazza. Blend historical artistic techniques with contemporary subject matter.',
-                        nano: './static/img/nano/nano_culture_5.png',
-                        gpt: './static/img/gpt/gpt_culture_5.png',
-                        bagel: './static/img/bagel/bagel_culture_5.png',
-                        qwen: './static/img/qwen/qwen_culture_5.png'
+                        chart: './static/img/demo/culture_5.jpg',
+                        reasoning_type: 'Causal',
+                        prompt: 'Generate the scene showing these figures preparing to depart after their rest.',
+                        nano: './static/img/nano/culture_5.png',
+                        gpt: './static/img/gpt/culture_5.png',
+                        bagel: './static/img/bagel/culture_5.png',
+                        qwen: './static/img/qwen/culture_5.png'
                     },
                     'item6': {
-                        chart: './static/img/demo/culture_6.png',
-                        prompt: 'Create a Renaissance-style painting depicting a modern scene of people using smartphones in a classical Italian piazza. Blend historical artistic techniques with contemporary subject matter.',
-                        nano: './static/img/nano/nano_culture_6.png',
-                        gpt: './static/img/gpt/gpt_culture_6.png',
-                        bagel: './static/img/bagel/bagel_culture_6.png',
-                        qwen: './static/img/qwen/qwen_culture_6.png'
+                        chart: './static/img/demo/culture_6.jpg',
+                        reasoning_type: 'Causal',
+                        prompt: 'Show these grinding tools being used for their intended purpose.',
+                        nano: './static/img/nano/culture_6.png',
+                        gpt: './static/img/gpt/culture_6.png',
+                        bagel: './static/img/bagel/culture_6.png',
+                        qwen: './static/img/qwen/culture_6.png'
                     },
                     'item7': {
-                        chart: './static/img/demo/culture_7.png',
-                        prompt: 'Create a Renaissance-style painting depicting a modern scene of people using smartphones in a classical Italian piazza. Blend historical artistic techniques with contemporary subject matter.',
-                        nano: './static/img/nano/nano_culture_7.png',
-                        gpt: './static/img/gpt/gpt_culture_7.png',
-                        bagel: './static/img/bagel/bagel_culture_7.png',
-                        qwen: './static/img/qwen/qwen_culture_7.png'
+                        chart: './static/img/demo/culture_7.jpg',
+                        reasoning_type: 'Synthetic',
+                        prompt: 'Show this elegant woman in an outdoor social setting while preserving the classical painting style.',
+                        nano: './static/img/nano/culture_7.png',
+                        gpt: './static/img/gpt/culture_7.png',
+                        bagel: './static/img/bagel/culture_7.png',
+                        qwen: './static/img/qwen/culture_7.png'
                     },
                     'item8': {
-                        chart: './static/img/demo/culture_8.png',
-                        prompt: 'Create a Renaissance-style painting depicting a modern scene of people using smartphones in a classical Italian piazza. Blend historical artistic techniques with contemporary subject matter.',
-                        nano: './static/img/nano/nano_culture_8.png',
-                        gpt: './static/img/gpt/gpt_culture_8.png',
-                        bagel: './static/img/bagel/bagel_culture_8.png',
-                        qwen: './static/img/qwen/qwen_culture_8.png'
+                        chart: './static/img/demo/culture_8.jpg',
+                        reasoning_type: 'Synthetic',
+                        prompt: 'Combine all four classical figures into a single unified composition.',
+                        nano: './static/img/nano/culture_8.png',
+                        gpt: './static/img/gpt/culture_8.png',
+                        bagel: './static/img/bagel/culture_8.png',
+                        qwen: './static/img/qwen/culture_8.png'
                     },
                     'item9': {
-                        chart: './static/img/demo/culture_9.png',
-                        prompt: 'Create a Renaissance-style painting depicting a modern scene of people using smartphones in a classical Italian piazza. Blend historical artistic techniques with contemporary subject matter.',
-                        nano: './static/img/nano/nano_culture_9.png',
-                        gpt: './static/img/gpt/gpt_culture_9.png',
-                        bagel: './static/img/bagel/bagel_culture_9.png',
-                        qwen: './static/img/qwen/qwen_culture_9.png'
+                        chart: './static/img/demo/culture_9.jpg',
+                        reasoning_type: 'Synthetic',
+                        prompt: 'Re-imagine this Japanese ikebana arrangement as it would appear in a 17th-century Dutch Golden Age still-life painting.',
+                        nano: './static/img/nano/culture_9.png',
+                        gpt: './static/img/gpt/culture_9.png',
+                        bagel: './static/img/bagel/culture_9.png',
+                        qwen: './static/img/qwen/culture_9.png'
                     },
                     'item10': {
-                        chart: './static/img/demo/culture_10.png',
-                        prompt: 'Create a Renaissance-style painting depicting a modern scene of people using smartphones in a classical Italian piazza. Blend historical artistic techniques with contemporary subject matter.',
-                        nano: './static/img/nano/nano_culture_10.png',
-                        gpt: './static/img/gpt/gpt_culture_10.png',
-                        bagel: './static/img/bagel/bagel_culture_10.png',
-                        qwen: './static/img/qwen/qwen_culture_10.png'
+                        chart: './static/img/demo/culture_10.jpg',
+                        reasoning_type: 'Synthetic',
+                        prompt: 'Re-imagine this Impressionist riverside landscape as an Edo-period Japanese ukiyo-e woodblock print.',
+                        nano: './static/img/nano/culture_10.png',
+                        gpt: './static/img/gpt/culture_10.png',
+                        bagel: './static/img/bagel/culture_10.png',
+                        qwen: './static/img/qwen/culture_10.png'
+                    },
+                    'item11': {
+                        chart: './static/img/demo/culture_11.jpg',
+                        reasoning_type: 'Quantitative',
+                        prompt: 'Generate this portrait with fruit quantity increased to the next prime number.',
+                        nano: './static/img/nano/culture_11.png',
+                        gpt: './static/img/gpt/culture_11.png',
+                        bagel: './static/img/bagel/culture_11.png',
+                        qwen: './static/img/qwen/culture_11.png'
+                    },
+                    'item12': {
+                        chart: './static/img/demo/culture_12.jpg',
+                        reasoning_type: 'Quantitative',
+                        prompt: 'Generate this 19th-century still-life floral painting with a prime number of visible blossoms—while preserving the same dark background, earthenware jug, muted palette, and impressionist brushwork.',
+                        nano: './static/img/nano/culture_12.png',
+                        gpt: './static/img/gpt/culture_12.png',
+                        bagel: './static/img/bagel/culture_12.png',
+                        qwen: './static/img/qwen/culture_12.png'
                     }
                 },
                 'common-sense': {
@@ -972,11 +1031,14 @@
                 showDetail(category, 'item1');
             }
 
-            function showDetail(category, item) {
+                function showDetail(category, item) {
                 // Update content based on selected item
                 const data = sampleData[category] && sampleData[category][item];
                 if (data) {
-                    document.getElementById('data-chart').innerHTML = `<img src="${data.chart}" alt="Data Chart" style="max-width: 100%; max-height: 100%; object-fit: contain;">`;
+                    document.getElementById('data-chart').innerHTML = `
+                        <img src="${data.chart}" alt="Data Chart" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                        <div class="reasoning-type-label">${data.reasoning_type || 'Temporal'}</div>
+                    `;
                     document.getElementById('prompt-text').textContent = data.prompt;
                     document.getElementById('nano-result').innerHTML = `<img src="${data.nano}" alt="Nano Banana Result" style="max-width: 100%; max-height: 100%; object-fit: contain;">`;
                     document.getElementById('gpt-result').innerHTML = `<img src="${data.gpt}" alt="GPT Result" style="max-width: 100%; max-height: 100%; object-fit: contain;">`;
