@@ -200,13 +200,17 @@
             color: #475569;
             border: 1px solid #cbd5e0;
         }
-
         .open-badge {
             background: #e6fffa;
             color: #047857;
             border: 1px solid #a7f3d0;
         }
-        
+        .edit-badge {
+            background: #dbeafe;
+            color: #1e40af;
+            border: 1px solid #93c5fd;
+        }
+
         .leaderboard-table tbody tr:nth-child(even) {
             background-color: #fafafa;
         }
@@ -406,7 +410,13 @@
                         </span>
                         <span>ROVER (soon)</span>
                     </a>
-                    <a href="#vsi-leaderboard" class="button">
+                    <a href="#rover-demo" class="button">
+                        <span class="icon is-small">
+                            <img src="./static/img/data_icon.png" alt="Leaderboard logo" style="height: 1em;" loading="lazy">
+                        </span>
+                        <span>Data Viewer</span>
+                    </a>
+                    <a href="#rover-leaderboard" class="button">
                         <span class="icon is-small">
                             <img src="./static/img/leaderboard-star-svgrepo-com.svg" alt="Leaderboard logo" style="height: 1em;" loading="lazy">
                         </span>
@@ -1142,7 +1152,7 @@
             </d-figure>
         </div>
 
-<!-- Evaluation Protocol Section -->
+        <!-- Evaluation Protocol Section -->
         <div id="evaluation-protocol" class="evaluation-protocol">
             <h1 class="text">Evaluation Protocol</h1>
             
@@ -1180,7 +1190,7 @@
             <div class="leaderboard-container">
                 <div class="leaderboard-header">
                     <p class="text" align="justify">
-                        To include your model in the leaderboard, please email <a href="mailto:jihanyang13@gmail.com">jihanyang13@gmail.com</a> with evaluation logs and setups.
+                        To include your model in the leaderboard, please email <a href="mailto:charlotte9762@gmail.com">charlotte9762@gmail.com</a> with evaluation logs and setups.
                     </p>
                 </div>
 
@@ -1209,36 +1219,6 @@
                     <tbody id="leaderboard-body">
                         <tr class="section-header">
                             <td colspan="13">Baselines</td>
-                        </tr>
-                        <tr class="baseline-row">
-                            <td>Chance-level (Random)</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>2024-11-15</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>25.0</td>
-                            <td>36.1</td>
-                            <td>28.3</td>
-                            <td>25.0</td>
-                        </tr>
-                        <tr class="baseline-row">
-                            <td>Chance-level (Frequency)</td>
-                            <td>-</td>
-                            <td>-</td>
-                            <td>2024-11-15</td>
-                            <td>34.0</td>
-                            <td>62.1</td>
-                            <td>32.0</td>
-                            <td>29.9</td>
-                            <td>33.1</td>
-                            <td>25.1</td>
-                            <td>47.9</td>
-                            <td>28.4</td>
-                            <td>25.2</td>
                         </tr>
                         <tr class="human-level-row">
                             <td><strong>Human-Level</strong></td>
@@ -1289,7 +1269,7 @@
                             <td>54.5</td>
                         </tr>
                         <tr>
-                            <td>GPT-4o <span class="model-badge proprietary-badge">Proprietary</span></td>
+                            <td>GPT-4o <span class="model-badge edit-badge">Edit</span></td>
                             <td>-</td>
                             <td>64</td>
                             <td>2025-04-03</td>
