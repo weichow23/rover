@@ -165,7 +165,7 @@
             padding-left: 20px;
         }
         
-        .leaderboard-table td:nth-child(5) {
+        .leaderboard-table td:nth-child(8) {
             font-weight: 700;
             font-size: 15px;
             color: #2d3748;
@@ -1152,35 +1152,6 @@
             </d-figure>
         </div>
 
-        <!-- Evaluation Protocol Section -->
-        <div id="evaluation-protocol" class="evaluation-protocol">
-            <h1 class="text">Evaluation Protocol</h1>
-            
-            <p class="text" align="justify">
-                <strong>Multi-Dimensional Assessment</strong>:
-                Evaluating reciprocal cross-modal reasoning requires assessment of both reasoning steps and resulting outputs. Text-only metrics overlook visual fidelity, while image-only metrics cannot verify whether the image reflects valid reasoning. We adopt a multi-dimensional protocol that combines an automated VLM judge with expert validation on stratified samples.
-            </p>
-        
-            <p class="text" align="justify">
-                <strong>Verbally-Augmented Generation Metrics</strong>:
-                We assess model performance across 5 rubric dimensions: (1) <strong>Reasoning Process (RP)</strong> evaluates the quality of verbal reasoning through logical structure and domain knowledge application; (2) <strong>Reasoning Visual (RV)</strong> measures how well generated visuals match target descriptions; (3) <strong>Reasoning Alignment (Align.)</strong> quantifies consistency between verbal reasoning and visual outcomes; (4) <strong>Visual Consistency (VC)</strong> ensures non-target elements remain unchanged; (5) <strong>Image Quality (IQ)</strong> assesses technical excellence and visual coherence.
-            </p>
-            
-            <p class="text" align="justify">
-                <strong>Visually-Augmented Generation Metrics</strong>:
-                We evaluate across 3 dimensions: (1) <strong>Interleaved Reasoning Quality (IR)</strong> evaluates plausibility and relevance of intermediate visual representations; (2) <strong>Final Answer Accuracy (Acc.)</strong> measures whether the model's final reasoning outcome matches ground truth; (3) <strong>Reasoning-Answer Alignment (Align.)</strong> quantifies how effectively generated images contribute to reaching correct conclusions.
-            </p>
-            
-            <d-figure id="fig-example-interleaved">
-                <figure>
-                    <img data-zoomable="" draggable="false" src="static/img/example2.png" alt="Example Interleaved Outputs" loading="lazy">
-                    <figcaption style="text-align: center; margin-top: 20px;">
-                        <strong>Figure 5: Example outputs on visually-augmented reasoning.</strong> Each row corresponds to one reasoning scenario, with the input on the left and outputs from representative unified models shown across columns.
-                    </figcaption>
-                </figure>
-            </d-figure>
-        </div>
-
         <!-- ROVER Leaderboard Section -->
         <div id="rover-leaderboard" class="rover-leaderboard">
             <h1 class="text"><span class="rover-logo">
@@ -1190,7 +1161,7 @@
             <div class="leaderboard-container">
                 <div class="leaderboard-header">
                     <p class="text" align="justify">
-                        To include your model in the leaderboard, please email <a href="mailto:charlotte9762@gmail.com">charlotte9762@gmail.com</a> with evaluation logs and setups.
+                        To include your model in the leaderboard, please email <a href="mailto:charlotte9762@gmail.com">charlotte9762@gmail.com</a> with evaluation logs and setups. The scores in the leaderboard are the average of RV, IQ, and VC.
                     </p>
                 </div>
 
@@ -1198,150 +1169,195 @@
                     <thead>
                         <tr class="header-group">
                             <th rowspan="2" data-column-index="0">Model</th>
-                            <th rowspan="2" data-column-index="1">LLM Params</th>
-                            <th rowspan="2" data-column-index="2">Frames</th>
-                            <th rowspan="2" data-column-index="3">Date</th>
-                            <th rowspan="2" data-column-index="4">Avg.</th>
-                            <th colspan="4">Numerical Answer Questions</th>
-                            <th colspan="4">Multiple-Choice Questions</th>
-                        </tr>
-                        <tr>
-                            <th data-column-index="5">Obj. Count</th>
-                            <th data-column-index="6">Abs. Dist.</th>
-                            <th data-column-index="7">Obj. Size</th>
-                            <th data-column-index="8">Room Size</th>
-                            <th data-column-index="9">Rel. Dist.</th>
-                            <th data-column-index="10">Rel. Dir.</th>
-                            <th data-column-index="11">Route Plan</th>
-                            <th data-column-index="12">Appear. Order</th>
+                            <th rowspan="2" data-column-index="1">Params</th>
+                            <th rowspan="2" data-column-index="2">Date</th>
+                            <th rowspan="2" data-column-index="3">Nature Science</th>
+                            <th rowspan="2" data-column-index="4">Culture / Art</th>
+                            <th rowspan="2" data-column-index="5">Common Sense</th>
+                            <th rowspan="2" data-column-index="6">Logic</th>
+                            <th rowspan="2" data-column-index="7">Average</th>
                         </tr>
                     </thead>
                     <tbody id="leaderboard-body">
-                        <tr class="section-header">
-                            <td colspan="13">Baselines</td>
-                        </tr>
-                        <tr class="human-level-row">
-                            <td><strong>Human-Level</strong></td>
+                        <tr>
+                            <td>Nano Banana <span class="model-badge proprietary-badge">Proprietary</span></td>
                             <td>-</td>
-                            <td>-</td>
-                            <td>2024-11-15</td>
-                            <td class="best-score">79.2</td>
-                            <td class="best-score">94.3</td>
-                            <td>47.0</td>
-                            <td>60.4</td>
-                            <td>45.9</td>
-                            <td class="best-score">94.7</td>
-                            <td class="best-score">95.8</td>
-                            <td class="best-score">95.8</td>
-                            <td class="best-score">100.0</td>
-                        </tr>
-                        <tr class="section-divider">
-                            <td colspan="13" class="section-header">MLLMs</td>
+                            <td>2025-08-22</td>
+                            <td class="best-score">83.4</td>
+                            <td class="best-score">81.4</td>
+                            <td class="best-score">85.3</td>
+                            <td class="best-score">68.8</td>
+                            <td class="best-score">80.4</td>
                         </tr>
                         <tr>
-                            <td>Gemini-1.5-Pro <span class="model-badge proprietary-badge">Proprietary</span></td>
+                            <td>Gemini 2.0 Flash <span class="model-badge proprietary-badge">Proprietary</span></td>
                             <td>-</td>
-                            <td>-</td>
-                            <td>2024-11-15</td>
-                            <td>48.8</td>
-                            <td>49.6</td>
-                            <td>28.8</td>
-                            <td>58.6</td>
-                            <td>49.4</td>
-                            <td>46.0</td>
-                            <td>48.1</td>
-                            <td>42.0</td>
-                            <td>68.0</td>
+                            <td>2025-02-05</td>
+                            <td>74.0</td>
+                            <td>73.5</td>
+                            <td>77.9</td>
+                            <td>63.3</td>
+                            <td>72.2</td>
                         </tr>
                         <tr>
-                            <td>InternVL3-78B <span class="model-badge open-badge">Open</span></td>
-                            <td>78B</td>
-                            <td>64</td>
-                            <td>2025-04-19</td>
-                            <td>48.4</td>
-                            <td>71.2</td>
-                            <td>53.7</td>
-                            <td>44.4</td>
-                            <td>39.5</td>
-                            <td>55.9</td>
-                            <td>39.5</td>
-                            <td>28.9</td>
-                            <td>54.5</td>
+                            <td>GPT-5 <span class="model-badge proprietary-badge">Proprietary</span></td>
+                            <td>-</td>
+                            <td>2025-08-07</td>
+                            <td>77.3</td>
+                            <td>75.9</td>
+                            <td>77.8</td>
+                            <td>69.2</td>
+                            <td>74.9</td>
                         </tr>
                         <tr>
-                            <td>GPT-4o <span class="model-badge edit-badge">Edit</span></td>
-                            <td>-</td>
-                            <td>64</td>
-                            <td>2025-04-03</td>
-                            <td>47.8</td>
-                            <td>43.1</td>
-                            <td>34.1</td>
-                            <td>68.6</td>
-                            <td>64.2</td>
-                            <td>48.3</td>
-                            <td>43.1</td>
-                            <td>29.4</td>
-                            <td>51.3</td>
+                            <td>BAGEL-Think14B <span class="model-badge open-badge">Open Source</span></td>
+                            <td>14B</td>
+                            <td>2025-05-23</td>
+                            <td>65.9</td>
+                            <td>67.1</td>
+                            <td>71.1</td>
+                            <td>48.7</td>
+                            <td>65.2</td>
                         </tr>
                         <tr>
-                            <td>Gemini-1.5 Flash <span class="model-badge proprietary-badge">Proprietary</span></td>
+                            <td>BAGEL14B <span class="model-badge open-badge">Open Source</span></td>
+                            <td>14B</td>
+                            <td>2025-05-23</td>
+                            <td>53.2</td>
+                            <td>57.2</td>
+                            <td>58.1</td>
+                            <td>55.4</td>
+                            <td>56.1</td>
+                        </tr>
+                        <tr>
+                            <td>Step1X-Edit v1.2 <span class="model-badge open-badge">Open Source</span></td>
                             <td>-</td>
-                            <td>-</td>
-                            <td>2024-11-15</td>
-                            <td>45.7</td>
-                            <td>50.8</td>
-                            <td>33.6</td>
-                            <td>56.5</td>
-                            <td>45.2</td>
-                            <td>48.0</td>
-                            <td>39.8</td>
+                            <td>2025-09-08</td>
+                            <td>67.9</td>
+                            <td>64.3</td>
+                            <td>64.3</td>
+                            <td>50.6</td>
+                            <td>63.2</td>
+                        </tr>
+                        <tr>
+                            <td>UniCoT14B <span class="model-badge open-badge">Open Source</span></td>
+                            <td>14B</td>
+                            <td>2025-07-29</td>
+                            <td>56.3</td>
+                            <td>73.1</td>
+                            <td>68.5</td>
                             <td>32.7</td>
-                            <td>59.2</td>
+                            <td>58.5</td>
                         </tr>
                         <tr>
-                            <td>Gemini-2.0 Flash <span class="model-badge proprietary-badge">Proprietary</span></td>
+                            <td>BLIP3o-8B <span class="model-badge open-badge">Open Source</span></td>
+                            <td>8B</td>
+                            <td>2025-05-23</td>
+                            <td>67.9</td>
+                            <td>66.1</td>
+                            <td>66.6</td>
+                            <td>58.0</td>
+                            <td>64.6</td>
+                        </tr>
+                        <tr>
+                            <td>MetaQuery-XL <span class="model-badge open-badge">Open Source</span></td>
+                            <td>8.6B</td>
+                            <td>2025-04-28</td>
                             <td>-</td>
                             <td>-</td>
-                            <td>2024-12-20</td>
-                            <td>45.4</td>
-                            <td>52.4</td>
-                            <td>30.6</td>
-                            <td>66.7</td>
-                            <td>31.8</td>
-                            <td>56.0</td>
-                            <td>46.3</td>
-                            <td>24.5</td>
-                            <td>55.1</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
                         </tr>
                         <tr>
-                            <td>LLaVA-Video-72B <span class="model-badge open-badge">Open</span></td>
-                            <td>72B</td>
-                            <td>32</td>
-                            <td>2024-11-24</td>
-                            <td>40.9</td>
-                            <td>48.9</td>
-                            <td>22.8</td>
-                            <td>57.4</td>
-                            <td>35.3</td>
-                            <td>42.4</td>
-                            <td>36.7</td>
-                            <td>35.0</td>
-                            <td>48.6</td>
+                            <td>Janus-Pro-7B <span class="model-badge open-badge">Open Source</span></td>
+                            <td>7B</td>
+                            <td>2025-01-27</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
                         </tr>
                         <tr>
-                            <td>LLaVA-OneVision-72B <span class="model-badge open-badge">Open</span></td>
-                            <td>72B</td>
-                            <td>32</td>
-                            <td>2024-11-27</td>
-                            <td>40.2</td>
-                            <td>43.5</td>
-                            <td>23.9</td>
-                            <td>57.6</td>
-                            <td>37.5</td>
-                            <td>42.5</td>
-                            <td>39.9</td>
-                            <td>32.5</td>
-                            <td>44.6</td>
+                            <td>Emu3-Gen <span class="model-badge open-badge">Open Source</span></td>
+                            <td>8B</td>
+                            <td>2025-02-13</td>
+                            <td>52.2</td>
+                            <td>57.5</td>
+                            <td>52.5</td>
+                            <td>54.7</td>
+                            <td>54.0</td>
+                        </tr>
+                        <tr>
+                            <td>OmniGen <span class="model-badge open-badge">Open Source</span></td>
+                            <td>27B</td>
+                            <td>2025-06-16</td>
+                            <td>58.2</td>
+                            <td>62.5</td>
+                            <td>61.3</td>
+                            <td>45.6</td>
+                            <td>56.8</td>
+                        </tr>
+                        <tr>
+                            <td>Show-o <span class="model-badge open-badge">Open Source</span></td>
+                            <td>27B</td>
+                            <td>2025-06-18</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Qwen-Image-Edit <span class="model-badge edit-badge">Edit</span></td>
+                            <td>20B</td>
+                            <td>2025-08-04</td>
+                            <td>68.6</td>
+                            <td>75.8</td>
+                            <td>74.0</td>
+                            <td>60.7</td>
+                            <td>71.2</td>
+                        </tr>
+                        <tr>
+                            <td>FLUX.1 Kontext <span class="model-badge edit-badge">Edit</span></td>
+                            <td>12B</td>
+                            <td>2025-08-06</td>
+                            <td>60.9</td>
+                            <td>66.1</td>
+                            <td>63.1</td>
+                            <td>49.7</td>
+                            <td>61.5</td>
+                        </tr>
+                        <tr>
+                            <td>UltraEdit(SD3) <span class="model-badge edit-badge">Edit</span></td>
+                            <td>2B</td>
+                            <td>2024-08-31</td>
+                            <td>48.8</td>
+                            <td>55.6</td>
+                            <td>46.7</td>
+                            <td>53.8</td>
+                            <td>51.1</td>
+                        </tr>
+                        <tr>
+                            <td>VAREdit-8B <span class="model-badge edit-badge">Edit</span></td>
+                            <td>8B</td>
+                            <td>2025-08-21</td>
+                            <td>58.2</td>
+                            <td>61.1</td>
+                            <td>55.9</td>
+                            <td>40.4</td>
+                            <td>55.8</td>
+                        </tr>
+                        <tr>
+                            <td>Step1X-Edit v1.1 <span class="model-badge edit-badge">Edit</span></td>
+                            <td>-</td>
+                            <td>2025-06-09</td>
+                            <td>66.5</td>
+                            <td>65.7</td>
+                            <td>62.8</td>
+                            <td>54.4</td>
+                            <td>63.5</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1511,7 +1527,7 @@
         const tbody = document.getElementById('leaderboard-body');
         
         let sortConfig = {
-            columnIndex: 4, 
+            columnIndex: 7, 
             direction: 'desc'
         };
 
