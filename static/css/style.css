@@ -1,5 +1,5 @@
 body {
-  font-family: Charter;
+  font-family: Palatino, "Palatino Linotype", "Book Antiqua", serif;
   margin: 0;
   padding: 0;
 }
@@ -239,12 +239,12 @@ body {
   }
 
   .header-content h1 {
-    font-size: 3.3em;
+    font-size: 2.5em;
   }
 
   .header-content h2 {
     margin-top: -0.75em;
-    font-size: 2em;
+    font-size: 1.5em;
   }
 }
 
@@ -621,7 +621,7 @@ figcaption .table-caption {
   font-style: italic;
   color: #6c757d;
   margin-top: 0; /* Ensures there is no additional space between table and caption */
-  font-size: 12px;
+  font-size: 8px;
 }
 
 * {
@@ -1046,7 +1046,7 @@ figure {
 }
 
 #fig-teaser {
-  margin-top: -10px; 
+  margin-top: 20px; 
   padding-top: 0;
   text-align: center; /* Ensure center alignment */
 }
