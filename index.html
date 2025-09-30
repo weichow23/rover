@@ -547,6 +547,10 @@
                 <img src="./static/img/icons/bench.svg" alt="Benchmark Logo" class="icon" loading="lazy">
                 ROVER<br>Benchmark
             </a>
+            <a href="#rover-demo" class="icon-link">
+                <img src="./static/img/icons/world.svg" alt="Viewer Logo" class="icon" loading="lazy">
+                Data<br>Viewer
+            </a>
             <a href="#evaluation-protocol" class="icon-link">
                 <img src="./static/img/icons/evaluation.svg" alt="Evaluation Logo" class="icon" loading="lazy">
                 Evaluation<br>Protocol
@@ -573,8 +577,10 @@
         <hr>
 
     <!-- Data Statistics Visualization -->
+    <h2 class="text"><span class="rover-logo">
+        <span class="r1">R</span><span class="o">O</span><span class="v">V</span><span class="e">E</span><span class="r2">R</span>
+    </span>Benchmark Statistics</h2>
     <div id="data-statistics" class="data-statistics-container">
-        <h3 class="main-title">ROVER Benchmark Statistics</h3>
         <div class="dual-charts-container">
             <div class="chart-section">
                 <div id="sankey-chart-ig" style="width: 100%; height: 250px;"></div>
@@ -586,12 +592,12 @@
     </div>
 
     <!-- ROVER Demo Section -->
-    <h1 class="text"><span class="rover-logo">
+    <h2 class="text"><span class="rover-logo">
         <span class="r1">R</span><span class="o">O</span><span class="v">V</span><span class="e">E</span><span class="r2">R</span>
-    </span> Demo</h1>
+    </span> Data Viewer</h2>
     <div id="rover-demo" class="rover-demo">
 
-        <h3 class="main-title">Verbally-augmented Reasoning for Visual Generation</h3>
+        <h3 class="main-title" style="font-size: 1.2rem; font-weight: 400; color: #222222; margin-bottom: 15px;">Verbally-augmented Reasoning for Visual Generation</h4>
 
         <div class="category-nav">
             <button class="category-btn active" onclick="showCategory('natural-science')">Natural Science</button>
@@ -1559,7 +1565,7 @@
                         text: '<b>ROVER-TG Structure</b>',
                         x: 0.5,
                         xanchor: 'center',
-                        font: {size: 14, family: 'Palatino', color: '#333333'}
+                        font: {size: 18, family: 'Palatino', color: '#333333'}
                     },
                     font: {size: 10, family: 'Palatino', color: '#333333'},
                     height: 200,
@@ -1625,19 +1631,300 @@
         </script>
     </div>
 
+    <!-- ROVER-TG Demo Section -->
+    <h2 class="text"><span class="rover-logo">
+        <span class="r1">R</span><span class="o">O</span><span class="v">V</span><span class="e">E</span><span class="r2">R</span>
+    </span> Data Viewer - TG</h2>
+    <div id="rover-demo-tg" class="rover-demo">
+
+        <h3 class="main-title" style="font-size: 1.2rem; font-weight: 400; color: #222222; margin-bottom: 15px;">Visually-augmented Reasoning for Verbal Generation</h4>
+
+        <div class="category-nav">
+            <button class="category-btn active" onclick="showCategoryTG('world-model')">World Model</button>
+            <button class="category-btn" onclick="showCategoryTG('logic-assistant')">Logic Assistant</button>
+            <button class="category-btn" onclick="showCategoryTG('visual-perception')">Visual Perception</button>
+        </div>
+    
+        <!-- Top Thumbnail Row -->
+        <div class="top-thumbnails">
+            <!-- World Model Thumbnails -->
+            <div id="world-model-thumbnails" class="thumbnail-row">
+                <img class="top-thumbnail" src="./static/img/demo/world_1.jpg" alt="World Model 1" onclick="showDetailTG('world-model', 'item1')">
+                <img class="top-thumbnail" src="./static/img/demo/world_2.jpg" alt="World Model 2" onclick="showDetailTG('world-model', 'item2')">
+                <img class="top-thumbnail" src="./static/img/demo/world_3.jpg" alt="World Model 3" onclick="showDetailTG('world-model', 'item3')">
+                <img class="top-thumbnail" src="./static/img/demo/world_4.jpg" alt="World Model 4" onclick="showDetailTG('world-model', 'item4')">
+                <img class="top-thumbnail" src="./static/img/demo/world_5.jpg" alt="World Model 5" onclick="showDetailTG('world-model', 'item5')">
+            </div>
+    
+            <!-- Logic Assistant Thumbnails -->
+            <div id="logic-assistant-thumbnails" class="thumbnail-row" style="display: none;">
+                <img class="top-thumbnail" src="./static/img/demo/logic_a_1.jpg" alt="Logic Assistant 1" onclick="showDetailTG('logic-assistant', 'item1')">
+                <img class="top-thumbnail" src="./static/img/demo/logic_a_2.jpg" alt="Logic Assistant 2" onclick="showDetailTG('logic-assistant', 'item2')">
+                <img class="top-thumbnail" src="./static/img/demo/logic_a_3.jpg" alt="Logic Assistant 3" onclick="showDetailTG('logic-assistant', 'item3')">
+                <img class="top-thumbnail" src="./static/img/demo/logic_a_4.jpg" alt="Logic Assistant 4" onclick="showDetailTG('logic-assistant', 'item4')">
+                <img class="top-thumbnail" src="./static/img/demo/logic_a_5.jpg" alt="Logic Assistant 5" onclick="showDetailTG('logic-assistant', 'item5')">
+            </div>
+    
+            <!-- Visual Perception Thumbnails -->
+            <div id="visual-perception-thumbnails" class="thumbnail-row" style="display: none;">
+                <img class="top-thumbnail" src="./static/img/demo/visual_1.jpg" alt="Visual Perception 1" onclick="showDetailTG('visual-perception', 'item1')">
+                <img class="top-thumbnail" src="./static/img/demo/visual_2.jpg" alt="Visual Perception 2" onclick="showDetailTG('visual-perception', 'item2')">
+                <img class="top-thumbnail" src="./static/img/demo/visual_3.jpg" alt="Visual Perception 3" onclick="showDetailTG('visual-perception', 'item3')">
+                <img class="top-thumbnail" src="./static/img/demo/visual_4.jpg" alt="Visual Perception 4" onclick="showDetailTG('visual-perception', 'item4')">
+                <img class="top-thumbnail" src="./static/img/demo/visual_5.jpg" alt="Visual Perception 5" onclick="showDetailTG('visual-perception', 'item5')">
+            </div>
+        </div>
+    
+        <!-- Detail View - Always Visible -->
+        <div id="detail-view-tg" class="detail-container">
+            <div class="detail-content">
+                <div class="left-panel">
+                    <div class="data-chart" id="data-chart-tg">
+                        Original Data Chart Placeholder
+                    </div>
+                    
+                    <div class="prompt-section">
+                        <h3>Prompt:</h3>
+                        <div class="prompt-text" id="prompt-text-tg">
+                            Generate a detailed scientific diagram showing the molecular structure of water, including accurate bond angles and electron cloud representations. Use clear labels and a clean, academic style suitable for a chemistry textbook.
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="right-panel">
+                    <div class="model-result-tg">
+                        <div class="model-name nano">Nano Banana</div>
+                        <div class="model-output-tg">
+                            <div class="output-image" id="nano-result-tg">
+                                Generated Image Placeholder
+                            </div>
+                            <div class="output-text" id="nano-text-tg">
+                                Generated text response will appear here...
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="model-result-tg">
+                        <div class="model-name gpt">GPT-5</div>
+                        <div class="model-output-tg">
+                            <div class="output-image" id="gpt-result-tg">
+                                Generated Image Placeholder
+                            </div>
+                            <div class="output-text" id="gpt-text-tg">
+                                Generated text response will appear here...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <script>
+            let currentCategoryTG = 'world-model';
+            
+            // Sample data for different categories and items
+            const sampleDataTG = {
+                'world-model': {
+                    'item1': {
+                        chart: './static/img/demo/world_1.jpg',
+                        reasoning_type: 'Physical',
+                        prompt: 'What will happen to this ball when it is dropped from this height?',
+                        nano: './static/img/nano/world_1.png',
+                        nano_text: 'The ball will accelerate downward due to gravity, following a parabolic trajectory until it hits the ground.',
+                        gpt: './static/img/gpt/world_1.png',
+                        gpt_text: 'Based on the physical principles, the ball will fall straight down under gravitational acceleration.'
+                    },
+                    'item2': {
+                        chart: './static/img/demo/world_2.jpg',
+                        reasoning_type: 'Physical',
+                        prompt: 'Predict the trajectory of this projectile launched at this angle.',
+                        nano: './static/img/nano/world_2.png',
+                        nano_text: 'The projectile will follow a parabolic path, reaching maximum height at the apex before descending.',
+                        gpt: './static/img/gpt/world_2.png',
+                        gpt_text: 'The projectile will travel in a curved path, with horizontal and vertical components of motion.'
+                    },
+                    'item3': {
+                        chart: './static/img/demo/world_3.jpg',
+                        reasoning_type: 'Embodied',
+                        prompt: 'How will this robot navigate around these obstacles?',
+                        nano: './static/img/nano/world_3.png',
+                        nano_text: 'The robot will need to plan a path that avoids the obstacles while reaching its destination.',
+                        gpt: './static/img/gpt/world_3.png',
+                        gpt_text: 'The robot should use pathfinding algorithms to navigate around the obstacles efficiently.'
+                    },
+                    'item4': {
+                        chart: './static/img/demo/world_4.jpg',
+                        reasoning_type: 'Physical',
+                        prompt: 'What happens when this liquid is heated to boiling point?',
+                        nano: './static/img/nano/world_4.png',
+                        nano_text: 'The liquid will begin to boil, with bubbles forming and rising to the surface.',
+                        gpt: './static/img/gpt/world_4.png',
+                        gpt_text: 'At the boiling point, the liquid will transition to gas phase with visible vapor formation.'
+                    },
+                    'item5': {
+                        chart: './static/img/demo/world_5.jpg',
+                        reasoning_type: 'Embodied',
+                        prompt: 'How should this autonomous vehicle respond to this traffic situation?',
+                        nano: './static/img/nano/world_5.png',
+                        nano_text: 'The vehicle should slow down and prepare to stop, maintaining safe following distance.',
+                        gpt: './static/img/gpt/world_5.png',
+                        gpt_text: 'The vehicle needs to assess the traffic conditions and adjust speed accordingly for safety.'
+                    }
+                },
+                'logic-assistant': {
+                    'item1': {
+                        chart: './static/img/demo/logic_a_1.jpg',
+                        reasoning_type: 'Geometry',
+                        prompt: 'Solve this geometric proof step by step.',
+                        nano: './static/img/nano/logic_a_1.png',
+                        nano_text: 'Using the given angles and side lengths, we can prove the triangles are congruent by SAS.',
+                        gpt: './static/img/gpt/logic_a_1.png',
+                        gpt_text: 'The proof follows from the angle-side-angle theorem, establishing triangle congruence.'
+                    },
+                    'item2': {
+                        chart: './static/img/demo/logic_a_2.jpg',
+                        reasoning_type: 'Puzzles',
+                        prompt: 'Find the missing piece in this puzzle.',
+                        nano: './static/img/nano/logic_a_2.png',
+                        nano_text: 'The missing piece should have the complementary shape to complete the pattern.',
+                        gpt: './static/img/gpt/logic_a_2.png',
+                        gpt_text: 'Analyzing the pattern, the missing piece must fit the established geometric sequence.'
+                    },
+                    'item3': {
+                        chart: './static/img/demo/logic_a_3.jpg',
+                        reasoning_type: 'Geometry',
+                        prompt: 'Calculate the area of this complex shape.',
+                        nano: './static/img/nano/logic_a_3.png',
+                        nano_text: 'We can break this into simpler shapes and use the area formulas for each component.',
+                        gpt: './static/img/gpt/logic_a_3.png',
+                        gpt_text: 'The total area can be calculated by summing the areas of the rectangular and triangular sections.'
+                    },
+                    'item4': {
+                        chart: './static/img/demo/logic_a_4.jpg',
+                        reasoning_type: 'Puzzles',
+                        prompt: 'Determine the next number in this sequence.',
+                        nano: './static/img/nano/logic_a_4.png',
+                        nano_text: 'The pattern follows a mathematical progression that can be identified through analysis.',
+                        gpt: './static/img/gpt/logic_a_4.png',
+                        gpt_text: 'The sequence follows a specific mathematical rule that determines the next term.'
+                    },
+                    'item5': {
+                        chart: './static/img/demo/logic_a_5.jpg',
+                        reasoning_type: 'Geometry',
+                        prompt: 'Prove that these lines are parallel.',
+                        nano: './static/img/nano/logic_a_5.png',
+                        nano_text: 'Using the alternate interior angles theorem, we can establish the parallel relationship.',
+                        gpt: './static/img/gpt/logic_a_5.png',
+                        gpt_text: 'The parallel lines can be proven using corresponding angles and geometric properties.'
+                    }
+                },
+                'visual-perception': {
+                    'item1': {
+                        chart: './static/img/demo/visual_1.jpg',
+                        reasoning_type: 'Jigsaw',
+                        prompt: 'Arrange these puzzle pieces to form the complete image.',
+                        nano: './static/img/nano/visual_1.png',
+                        nano_text: 'The pieces should be arranged based on their edge patterns and color matching.',
+                        gpt: './static/img/gpt/visual_1.png',
+                        gpt_text: 'Each piece has unique edge characteristics that determine its correct position in the puzzle.'
+                    },
+                    'item2': {
+                        chart: './static/img/demo/visual_2.jpg',
+                        reasoning_type: 'Spatial',
+                        prompt: 'Identify the 3D structure from this 2D projection.',
+                        nano: './static/img/nano/visual_2.png',
+                        nano_text: 'The 3D structure can be reconstructed by analyzing the depth cues and perspective.',
+                        gpt: './static/img/gpt/visual_2.png',
+                        gpt_text: 'Spatial reasoning allows us to infer the three-dimensional form from two-dimensional projections.'
+                    },
+                    'item3': {
+                        chart: './static/img/demo/visual_3.jpg',
+                        reasoning_type: 'Jigsaw',
+                        prompt: 'Complete this partially assembled jigsaw puzzle.',
+                        nano: './static/img/nano/visual_3.png',
+                        nano_text: 'The remaining pieces should fit the gaps based on their shape and color patterns.',
+                        gpt: './static/img/gpt/visual_3.png',
+                        gpt_text: 'Each remaining piece has a unique shape that corresponds to a specific gap in the puzzle.'
+                    },
+                    'item4': {
+                        chart: './static/img/demo/visual_4.jpg',
+                        reasoning_type: 'Spatial',
+                        prompt: 'Determine the orientation of this object in 3D space.',
+                        nano: './static/img/nano/visual_4.png',
+                        nano_text: 'The object orientation can be determined by analyzing the visible faces and edges.',
+                        gpt: './static/img/gpt/visual_4.png',
+                        gpt_text: 'Spatial analysis of the object reveals its three-dimensional orientation and position.'
+                    },
+                    'item5': {
+                        chart: './static/img/demo/visual_5.jpg',
+                        reasoning_type: 'Jigsaw',
+                        prompt: 'Find the missing piece that completes this pattern.',
+                        nano: './static/img/nano/visual_5.png',
+                        nano_text: 'The missing piece should match the surrounding pattern and complete the design.',
+                        gpt: './static/img/gpt/visual_5.png',
+                        gpt_text: 'Pattern recognition helps identify the specific piece needed to complete the visual sequence.'
+                    }
+                }
+            };
+    
+            function showCategoryTG(category) {
+                // Hide all thumbnail rows
+                document.querySelectorAll('.thumbnail-row').forEach(container => {
+                    container.style.display = 'none';
+                });
+                
+                // Show selected category
+                document.getElementById(category + '-thumbnails').style.display = 'flex';
+                
+                // Update active button
+                document.querySelectorAll('.category-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                event.target.classList.add('active');
+                
+                currentCategoryTG = category;
+                
+                // Load first item of the category by default
+                showDetailTG(category, 'item1');
+            }
+
+            function showDetailTG(category, item) {
+                // Update content based on selected item
+                const data = sampleDataTG[category] && sampleDataTG[category][item];
+                if (data) {
+                    document.getElementById('data-chart-tg').innerHTML = `
+                        <img src="${data.chart}" alt="Data Chart" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                        <div class="reasoning-type-label">${data.reasoning_type || 'Physical'}</div>
+                    `;
+                    document.getElementById('prompt-text-tg').textContent = data.prompt;
+                    document.getElementById('nano-result-tg').innerHTML = `<img src="${data.nano}" alt="Nano Banana Result" style="max-width: 100%; max-height: 100%; object-fit: contain;">`;
+                    document.getElementById('nano-text-tg').textContent = data.nano_text;
+                    document.getElementById('gpt-result-tg').innerHTML = `<img src="${data.gpt}" alt="GPT Result" style="max-width: 100%; max-height: 100%; object-fit: contain;">`;
+                    document.getElementById('gpt-text-tg').textContent = data.gpt_text;
+                }
+            }
+    
+            function backToThumbnailsTG() {
+                document.getElementById('detail-view-tg').style.display = 'none';
+                document.getElementById(currentCategoryTG + '-thumbnails').style.display = 'grid';
+            }
+            showDetailTG('world-model', 'item1');
+        </script>
+    </div>
+
 
         <!-- ROVER Benchmark Section -->
         <div id='rover-benchmark' class="rover-benchmark">
             <div id="sec:rover-overview" class="sub-section">
-                <h1 class="text"><span class="rover-logo">
+                <h2 class="text"><span class="rover-logo">
   <span class="r1">R</span><span class="o">O</span><span class="v">V</span><span class="e">E</span><span class="r2">R</span>
-</span> Benchmark</h1>
+</span> Benchmark</h2>
                 <p class="text" align="justify">
                     <strong>Benchmark Overview:</strong> <span class="rover-logo">
   <span class="r1">R</span><span class="o">O</span><span class="v">V</span><span class="e">E</span><span class="r2">R</span>
 </span> introduces the first benchmark specifically designed to evaluate reciprocal cross-modal reasoning in unified multimodal models. Unlike existing benchmarks that evaluate modalities in isolation, <span class="rover-logo">
   <span class="r1">R</span><span class="o">O</span><span class="v">V</span><span class="e">E</span><span class="r2">R</span>
-</span> requires models to use information from one modality to inform and improve outputs in another. The benchmark comprises over 1,200 tasks grounded in about 2,048 images, targeting two complementary settings that capture the essence of cross-modal reasoning capabilities.
+</span> requires models to use information from one modality to inform and improve outputs in another. The benchmark comprises 1285 tasks grounded in about 2,048 images, targeting two complementary settings that capture the essence of cross-modal reasoning capabilities.
                 </p>
                 
                 <d-figure id="fig-verbally-augmented">
@@ -1685,7 +1972,7 @@
 
         <!-- Evaluation Protocol Section -->
         <div id="evaluation-protocol" class="evaluation-protocol">
-            <h1 class="text">Evaluation Protocol</h1>
+            <h2 class="text">Evaluation Protocol</h2>
             
             <p class="text" align="justify">
                 <strong>Multi-Dimensional Assessment</strong>:
@@ -1714,9 +2001,9 @@
 
         <!-- ROVER Leaderboard Section -->
         <div id="rover-leaderboard" class="rover-leaderboard">
-            <h1 class="text"><span class="rover-logo">
+            <h2 class="text"><span class="rover-logo">
   <span class="r1">R</span><span class="o">O</span><span class="v">V</span><span class="e">E</span><span class="r2">R</span>
-</span> Leaderboard</h1>
+</span> Leaderboard</h2>
             
             <div class="leaderboard-container">
                 <div class="leaderboard-header">
@@ -1926,7 +2213,7 @@
 
         <!-- Main Results Section -->
         <div id='experimental-results' class="experimental-results">
-            <h1 class="text">Main Results</h1>
+            <h2 class="text">Main Results</h2>
                 
             <p class="text" align="justify">
                 We conducted comprehensive evaluation of 17 state-of-the-art unified multimodal models across both settings in <span class="rover-logo">
@@ -1955,7 +2242,7 @@
 
         <!-- Analysis and Insights Section -->
         <div id='analysis-insights' class="analysis-insights">
-            <h1 class="text">Analysis and Insights</h1>
+            <h2 class="text">Analysis and Insights</h2>
             
             <p class="text" align="justify">
                 <strong>Cross-Modal Reasoning Matters for UMMs</strong>:
