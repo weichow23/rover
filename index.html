@@ -23,11 +23,13 @@
     <link rel="preconnect" href="https://polyfill.io">
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link rel="preconnect" href="https://d3js.org">
+    
+    <script src="https://cdn.plot.ly/plotly-2.26.0.min.js"></script>
 
     <!-- Critical CSS inlined -->
     <style>
         /* Critical path CSS - Basic layout and above-the-fold content */
-        body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+        body { margin: 0; font-family: Palatino, "Palatino Linotype", "Book Antiqua", serif; }
         .header-wrapper { background: #fff; padding: 2rem 2rem; }
         .header-container { max-width: 1400px; margin: 0 auto; padding: 0 0; display: flex; align-items: center; }
         .header-content { flex: 1; }
@@ -275,8 +277,84 @@
             margin: 0;
         }
         
+        /* Data Statistics Container */
+        .data-statistics-container {
+            width: 80vw !important;
+            margin-left: calc(-40vw + 50%) !important;
+            margin-right: calc(-40vw + 50%) !important;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .data-statistics-container h3 {
+            text-align: center;
+            color: #2d3748;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        
+        .dual-charts-container {
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+            justify-content: center;
+        }
+        
+        .chart-section {
+            width: 500px;
+            max-width: 500px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px
+        }
+        
+        .chart-title {
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 20px;
+            font-family: 'Palatino', serif;
+        }
+        
+        #sankey-chart-ig, #sankey-chart-tg {
+            background: white;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
+            display: block;
+        }
+
         /* Mobile Responsive */
         @media (max-width: 768px) {
+            .data-statistics-container {
+                width: 95vw !important;
+                margin-left: calc(-47.5vw + 50%) !important;
+                margin-right: calc(-47.5vw + 50%) !important;
+                padding: 20px;
+                margin: 20px 0;
+            }
+            
+            .dual-charts-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .chart-section {
+                padding: 15px;
+            }
+            
+            #sankey-chart-ig, #sankey-chart-tg {
+                height: 250px;
+            }
             .leaderboard-container {
                 overflow-x: auto;
                 -webkit-overflow-scrolling: touch;
@@ -343,9 +421,7 @@
         <div class="header-container" id="header-container">
             <div class="header-content">
                 <h1 style="margin-top: 0px">
-                    <i><span class="rover-logo">
-                        <span class="r1">R</span><span class="o">O</span><span class="v">V</span><span class="e">E</span><span class="r2">R</span>
-                    </span></i>
+                    <i><span class="rover-logo"><span class="r1">R</span><span class="o">O</span><span class="v">V</span><span class="e">E</span><span class="r2">R</span></span></i>
                 </h1>
                 
                 <h2>Benchmarking Reciprocal Cross-Modal Reasoning for Omnimodal Generation</h2>
@@ -434,20 +510,14 @@
             <figure>
                 <img data-zoomable="" draggable="false" src="static/img/teaser.png" alt="Visual-Spatial Intelligence Teaser" loading="lazy">
                 <figcaption>
-                    <strong>Figure 1:</strong> The <span class="rover-logo">
-  <span class="r1">R</span><span class="o">O</span><span class="v">V</span><span class="e">E</span><span class="r2">R</span>
-</span> benchmark. <span class="rover-logo">
-  <span class="r1">R</span><span class="o">O</span><span class="v">V</span><span class="e">E</span><span class="r2">R</span>
-</span> evaluates UMMs through reciprocal cross-modal reasoning: \ourvg (left) requires generating images with language-augmented reasoning, while \ourir (right) requires generating text answers with visually-augmented reasoning.
+                    The <span class="rover-logo"><span class="r1">R</span><span class="o">O</span><span class="v">V</span><span class="e">E</span><span class="r2">R</span></span> benchmark. <span class="rover-logo"><span class="r1">R</span><span class="o">O</span><span class="v">V</span><span class="e">E</span><span class="r2">R</span></span> evaluates UMMs through reciprocal cross-modal reasoning: <strong>ROVER-IG</strong> (left) requires generating images with language-augmented reasoning, while <strong>ROVER-TG</strong> (right) requires generating text answers with visually-augmented reasoning.
                 </figcaption>
             </figure>
         </d-figure>
 
         <!-- Abstract -->
         <p class="text">
-            Unified multimodal models (UMMs) have shown remarkable advances in understanding and generating text and images. However, prevailing evaluations treat these abilities in isolation, such that tasks with multimodal inputs and outputs are scored primarily through unimodal reasoning. Existing benchmarks rarely require the use of one modality to guide, verify, or refine outputs in the other, failing to capture a central aspiration of unified multimodal models: seamless reasoning across modalities. We address this gap with <span class="rover-logo">
-  <span class="r1">R</span><span class="o">O</span><span class="v">V</span><span class="e">E</span><span class="r2">R</span>
-</span>, a human-annotated benchmark that explicitly targets reciprocal cross-modal reasoning, containing over 1,200 tasks grounded in 2,048 images spanning two complementary settings.
+            Unified multimodal models (UMMs) have shown remarkable advances in understanding and generating text and images. However, prevailing evaluations treat these abilities in isolation, such that tasks with multimodal inputs and outputs are scored primarily through unimodal reasoning. Existing benchmarks rarely require the use of one modality to guide, verify, or refine outputs in the other, failing to capture a central aspiration of unified multimodal models: seamless reasoning across modalities.             We address this gap with <span class="rover-logo"><span class="r1">R</span><span class="o">O</span><span class="v">V</span><span class="e">E</span><span class="r2">R</span></span>, a human-annotated benchmark that explicitly targets reciprocal cross-modal reasoning, containing over 1,200 tasks grounded in 2,048 images spanning two complementary settings.
         </p>
 
         <div class="icon-container">
@@ -502,6 +572,18 @@
 
         <hr>
 
+    <!-- Data Statistics Visualization -->
+    <div id="data-statistics" class="data-statistics-container">
+        <h3 class="main-title">ROVER Benchmark Statistics</h3>
+        <div class="dual-charts-container">
+            <div class="chart-section">
+                <div id="sankey-chart-ig" style="width: 100%; height: 250px;"></div>
+            </div>
+            <div class="chart-section">
+                <div id="sankey-chart-tg" style="width: 100%; height: 250px;"></div>
+            </div>
+        </div>
+    </div>
 
     <!-- ROVER Demo Section -->
     <h1 class="text"><span class="rover-logo">
@@ -557,27 +639,31 @@
                 <img class="top-thumbnail" src="./static/img/demo/common_1.jpg" alt="Common Sense 1" onclick="showDetail('common-sense', 'item1')">
                 <img class="top-thumbnail" src="./static/img/demo/common_2.jpg" alt="Common Sense 2" onclick="showDetail('common-sense', 'item2')">
                 <img class="top-thumbnail" src="./static/img/demo/common_3.jpg" alt="Common Sense 3" onclick="showDetail('common-sense', 'item3')">
-                <img class="top-thumbnail" src="./static/img/demo/common_4.jpg" alt="Common Sense 4" onclick="showDetail('common-sense', 'item4')">
+                <img class="top-thumbnail" src="./static/img/demo/common_4.png" alt="Common Sense 4" onclick="showDetail('common-sense', 'item4')">
                 <img class="top-thumbnail" src="./static/img/demo/common_5.jpg" alt="Common Sense 5" onclick="showDetail('common-sense', 'item5')">
                 <img class="top-thumbnail" src="./static/img/demo/common_6.jpg" alt="Common Sense 6" onclick="showDetail('common-sense', 'item6')">
                 <img class="top-thumbnail" src="./static/img/demo/common_7.jpg" alt="Common Sense 7" onclick="showDetail('common-sense', 'item7')">
                 <img class="top-thumbnail" src="./static/img/demo/common_8.jpg" alt="Common Sense 8" onclick="showDetail('common-sense', 'item8')">
                 <img class="top-thumbnail" src="./static/img/demo/common_9.jpg" alt="Common Sense 9" onclick="showDetail('common-sense', 'item9')">
                 <img class="top-thumbnail" src="./static/img/demo/common_10.jpg" alt="Common Sense 10" onclick="showDetail('common-sense', 'item10')">
+                <img class="top-thumbnail" src="./static/img/demo/common_11.jpg" alt="Common Sense 11" onclick="showDetail('common-sense', 'item11')">
+                <img class="top-thumbnail" src="./static/img/demo/common_12.jpg" alt="Common Sense 12" onclick="showDetail('common-sense', 'item12')">
             </div>
     
             <!-- Logic Thumbnails -->
             <div id="logic-thumbnails" class="thumbnail-row" style="display: none;">
-                <img class="top-thumbnail" src="./static/img/demo/logic_1.jpg" alt="Logic 1" onclick="showDetail('logic', 'item1')">
-                <img class="top-thumbnail" src="./static/img/demo/logic_2.jpg" alt="Logic 2" onclick="showDetail('logic', 'item2')">
-                <img class="top-thumbnail" src="./static/img/demo/logic_3.jpg" alt="Logic 3" onclick="showDetail('logic', 'item3')">
-                <img class="top-thumbnail" src="./static/img/demo/logic_4.jpg" alt="Logic 4" onclick="showDetail('logic', 'item4')">
-                <img class="top-thumbnail" src="./static/img/demo/logic_5.jpg" alt="Logic 5" onclick="showDetail('logic', 'item5')">
+                <img class="top-thumbnail" src="./static/img/demo/logic_1.png" alt="Logic 1" onclick="showDetail('logic', 'item1')">
+                <img class="top-thumbnail" src="./static/img/demo/logic_2.png" alt="Logic 2" onclick="showDetail('logic', 'item2')">
+                <img class="top-thumbnail" src="./static/img/demo/logic_3.png" alt="Logic 3" onclick="showDetail('logic', 'item3')">
+                <img class="top-thumbnail" src="./static/img/demo/logic_4.png" alt="Logic 4" onclick="showDetail('logic', 'item4')">
+                <img class="top-thumbnail" src="./static/img/demo/logic_5.png" alt="Logic 5" onclick="showDetail('logic', 'item5')">
                 <img class="top-thumbnail" src="./static/img/demo/logic_6.jpg" alt="Logic 6" onclick="showDetail('logic', 'item6')">
-                <img class="top-thumbnail" src="./static/img/demo/logic_7.jpg" alt="Logic 7" onclick="showDetail('logic', 'item7')">
-                <img class="top-thumbnail" src="./static/img/demo/logic_8.jpg" alt="Logic 8" onclick="showDetail('logic', 'item8')">
+                <img class="top-thumbnail" src="./static/img/demo/logic_7.png" alt="Logic 7" onclick="showDetail('logic', 'item7')">
+                <img class="top-thumbnail" src="./static/img/demo/logic_8.png" alt="Logic 8" onclick="showDetail('logic', 'item8')">
                 <img class="top-thumbnail" src="./static/img/demo/logic_9.jpg" alt="Logic 9" onclick="showDetail('logic', 'item9')">
-                <img class="top-thumbnail" src="./static/img/demo/logic_10.jpg" alt="Logic 10" onclick="showDetail('logic', 'item10')">
+                <img class="top-thumbnail" src="./static/img/demo/logic_10.png" alt="Logic 10" onclick="showDetail('logic', 'item10')">
+                <img class="top-thumbnail" src="./static/img/demo/logic_11.png" alt="Logic 11" onclick="showDetail('logic', 'item11')">
+                <img class="top-thumbnail" src="./static/img/demo/logic_12.png" alt="Logic 12" onclick="showDetail('logic', 'item12')">
             </div>
         </div>
     
@@ -856,166 +942,222 @@
                 },
                 'common-sense': {
                     'item1': {
-                        chart: './static/img/demo/common_1.png',
-                        prompt: 'Illustrate the proper way to pack a suitcase for a week-long trip, showing efficient use of space and organization of different types of clothing and accessories.',
-                        nano: './static/img/nano/nano_common_1.png',
-                        gpt: './static/img/gpt/gpt_common_1.png',
-                        bagel: './static/img/bagel/bagel_common_1.png',
-                        qwen: './static/img/qwen/qwen_common_1.png'
+                        chart: './static/img/demo/common_1.jpg',
+                        reasoning_type: 'Temporal',
+                        prompt: 'Show this windmill structure after 50 years of abandonment and weathering.',
+                        nano: './static/img/nano/common_1.png',
+                        gpt: './static/img/gpt/common_1.png',
+                        bagel: './static/img/bagel/common_1.png',
+                        qwen: './static/img/qwen/common_1.png'
                     },
                     'item2': {
-                        chart: './static/img/demo/common_2.png',
-                        prompt: 'Show the step-by-step process of safely crossing a busy street, including looking both ways, using crosswalks, and timing with traffic signals.',
-                        nano: './static/img/nano/nano_common_2.png',
-                        gpt: './static/img/gpt/gpt_common_2.png',
-                        bagel: './static/img/bagel/bagel_common_2.png',
-                        qwen: './static/img/qwen/qwen_common_2.png'
+                        chart: './static/img/demo/common_2.jpg',
+                        reasoning_type: 'Temporal',
+                        prompt: 'Render this lighthouse scene 6 hours earlier.',
+                        nano: './static/img/nano/common_2.png',
+                        gpt: './static/img/gpt/common_2.png',
+                        bagel: './static/img/bagel/common_2.png',
+                        qwen: './static/img/qwen/common_2.png'
                     },
                     'item3': {
-                        chart: './static/img/demo/common_3.png',
-                        prompt: 'Show the step-by-step process of safely crossing a busy street, including looking both ways, using crosswalks, and timing with traffic signals.',
-                        nano: './static/img/nano/nano_common_3.png',
-                        gpt: './static/img/gpt/gpt_common_3.png',
-                        bagel: './static/img/bagel/bagel_common_3.png',
-                        qwen: './static/img/qwen/qwen_common_3.png'
+                        chart: './static/img/demo/common_3.jpg',
+                        reasoning_type: 'Temporal',
+                        prompt: 'Display this street scene 5 seconds later showing the new position of the person.',
+                        nano: './static/img/nano/common_3.png',
+                        gpt: './static/img/gpt/common_3.png',
+                        bagel: './static/img/bagel/common_3.png',
+                        qwen: './static/img/qwen/common_3.png'
                     },
                     'item4': {
                         chart: './static/img/demo/common_4.png',
-                        prompt: 'Show the step-by-step process of safely crossing a busy street, including looking both ways, using crosswalks, and timing with traffic signals.',
-                        nano: './static/img/nano/nano_common_4.png',
-                        gpt: './static/img/gpt/gpt_common_4.png',
-                        bagel: './static/img/bagel/bagel_common_4.png',
-                        qwen: './static/img/qwen/qwen_common_4.png'
+                        reasoning_type: 'Spatial',
+                        prompt: 'Generate the view from the office room entrance looking into the room.',
+                        nano: './static/img/nano/common_4.png',
+                        gpt: './static/img/gpt/common_4.png',
+                        bagel: './static/img/bagel/common_4.png',
+                        qwen: './static/img/qwen/common_4.png'
                     },
                     'item5': {
-                        chart: './static/img/demo/common_5.png',
-                        prompt: 'Show the step-by-step process of safely crossing a busy street, including looking both ways, using crosswalks, and timing with traffic signals.',
-                        nano: './static/img/nano/nano_common_5.png',
-                        gpt: './static/img/gpt/gpt_common_5.png',
-                        bagel: './static/img/bagel/bagel_common_5.png',
-                        qwen: './static/img/qwen/qwen_common_5.png'
+                        chart: './static/img/demo/common_5.jpg',
+                        reasoning_type: 'Spatial',
+                        prompt: 'Generate this white building as a 3D model in Cities: Skylines game style.',
+                        nano: './static/img/nano/common_5.png',
+                        gpt: './static/img/gpt/common_5.png',
+                        bagel: './static/img/bagel/common_5.png',
+                        qwen: './static/img/qwen/common_5.png'
                     },
                     'item6': {
-                        chart: './static/img/demo/common_6.png',
-                        prompt: 'Show the step-by-step process of safely crossing a busy street, including looking both ways, using crosswalks, and timing with traffic signals.',
-                        nano: './static/img/nano/nano_common_6.png',
-                        gpt: './static/img/gpt/gpt_common_6.png',
-                        bagel: './static/img/bagel/bagel_common_6.png',
-                        qwen: './static/img/qwen/qwen_common_6.png'
+                        chart: './static/img/demo/common_6.jpg',
+                        reasoning_type: 'Spatial',
+                        prompt: 'Create a hand-drawn architectural floor plan of this living room layout including all furniture.',
+                        nano: './static/img/nano/common_6.png',
+                        gpt: './static/img/gpt/common_6.png',
+                        bagel: './static/img/bagel/common_6.png',
+                        qwen: './static/img/qwen/common_6.png'
                     },
                     'item7': {
-                        chart: './static/img/demo/common_7.png',
-                        prompt: 'Show the step-by-step process of safely crossing a busy street, including looking both ways, using crosswalks, and timing with traffic signals.',
-                        nano: './static/img/nano/nano_common_7.png',
-                        gpt: './static/img/gpt/gpt_common_7.png',
-                        bagel: './static/img/bagel/bagel_common_7.png',
-                        qwen: './static/img/qwen/qwen_common_7.png'
+                        chart: './static/img/demo/common_7.jpg',
+                        reasoning_type: 'Causal',
+                        prompt: 'Generate the scene showing the bowling pins after this ball thrown toward the right hits them.',
+                        nano: './static/img/nano/common_7.png',
+                        gpt: './static/img/gpt/common_7.png',
+                        bagel: './static/img/bagel/common_7.png',
+                        qwen: './static/img/qwen/common_7.png'
                     },
                     'item8': {
-                        chart: './static/img/demo/common_8.png',
-                        prompt: 'Show the step-by-step process of safely crossing a busy street, including looking both ways, using crosswalks, and timing with traffic signals.',
-                        nano: './static/img/nano/nano_common_8.png',
-                        gpt: './static/img/gpt/gpt_common_8.png',
-                        bagel: './static/img/bagel/bagel_common_8.png',
-                        qwen: './static/img/qwen/qwen_common_8.png'
+                        chart: './static/img/demo/common_8.jpg',
+                        reasoning_type: 'Causal',
+                        prompt: 'Generate this person reaction and actions when his bus arrives at the stop.',
+                        nano: './static/img/nano/common_8.png',
+                        gpt: './static/img/gpt/common_8.png',
+                        bagel: './static/img/bagel/common_8.png',
+                        qwen: './static/img/qwen/common_8.png'
                     },
                     'item9': {
-                        chart: './static/img/demo/common_9.png',
-                        prompt: 'Show the step-by-step process of safely crossing a busy street, including looking both ways, using crosswalks, and timing with traffic signals.',
-                        nano: './static/img/nano/nano_common_9.png',
-                        gpt: './static/img/gpt/gpt_common_9.png',
-                        bagel: './static/img/bagel/bagel_common_9.png',
-                        qwen: './static/img/qwen/qwen_common_9.png'
+                        chart: './static/img/demo/common_9.jpg',
+                        reasoning_type: 'Synthetic',
+                        prompt: 'Show a 1990s-era train passing under this stone bridge.',
+                        nano: './static/img/nano/common_9.png',
+                        gpt: './static/img/gpt/common_9.png',
+                        bagel: './static/img/bagel/common_9.png',
+                        qwen: './static/img/qwen/common_9.png'
                     },
                     'item10': {
-                        chart: './static/img/demo/common_10.png',
-                        prompt: 'Show the step-by-step process of safely crossing a busy street, including looking both ways, using crosswalks, and timing with traffic signals.',
-                        nano: './static/img/nano/nano_common_10.png',
-                        gpt: './static/img/gpt/gpt_common_10.png',
-                        bagel: './static/img/bagel/bagel_common_10.png',
-                        qwen: './static/img/qwen/qwen_common_10.png'
+                        chart: './static/img/demo/common_10.jpg',
+                        reasoning_type: 'Synthetic',
+                        prompt: 'Transform all the fruits shown into an arranged fruit platter presentation.',
+                        nano: './static/img/nano/common_10.png',
+                        gpt: './static/img/gpt/common_10.png',
+                        bagel: './static/img/bagel/common_10.png',
+                        qwen: './static/img/qwen/common_10.png'
+                    },
+                    'item11': {
+                        chart: './static/img/demo/common_11.jpg',
+                        reasoning_type: 'Quantitative',
+                        prompt: 'Put 4 of the scattered coffee beans back into the bowl',
+                        nano: './static/img/nano/common_11.png',
+                        gpt: './static/img/gpt/common_11.png',
+                        bagel: './static/img/bagel/common_11.png',
+                        qwen: './static/img/qwen/common_11.png'
+                    },
+                    'item12': {
+                        chart: './static/img/demo/common_12.jpg',
+                        reasoning_type: 'Quantitative',
+                        prompt: 'After preparing two cups of fresh lemonade with 2 lemons, remove the lemons that were used and show the still-life scene with the remaining whole lemons in the white basket.',
+                        nano: './static/img/nano/common_12.png',
+                        gpt: './static/img/gpt/common_12.png',
+                        bagel: './static/img/bagel/common_12.png',
+                        qwen: './static/img/qwen/common_12.png'
                     }
                 },
                 'logic': {
                     'item1': {
                         chart: './static/img/demo/logic_1.png',
-                        prompt: 'Create a visual representation of a logical syllogism: "All birds can fly. Penguins are birds. Therefore, penguins can fly." Show why this conclusion is flawed using diagrams and counter-examples.',
-                        nano: './static/img/nano/nano_logic_1.png',
-                        gpt: './static/img/gpt/gpt_logic_1.png',
-                        bagel: './static/img/bagel/bagel_logic_1.png',
-                        qwen: './static/img/qwen/qwen_logic_1.png'
+                        reasoning_type: 'Abstract',
+                        prompt: 'Generate the missing shape for the bottom-right position in this 3x3 matrix pattern.',
+                        nano: './static/img/nano/logic_1.png',
+                        gpt: './static/img/gpt/logic_1.png',
+                        bagel: './static/img/bagel/logic_1.png',
+                        qwen: './static/img/qwen/logic_1.png'
                     },
                     'item2': {
                         chart: './static/img/demo/logic_2.png',
-                        prompt: 'Illustrate the concept of logical fallacies using visual examples, specifically showing "correlation vs causation" with clear graphs and explanatory text.',
-                        nano: './static/img/nano/nano_lo    gic_2.png',
-                        gpt: './static/img/gpt/gpt_logic_2.png',
-                        bagel: './static/img/bagel/bagel_logic_2.png',
-                        qwen: './static/img/qwen/qwen_logic_2.png'
+                        reasoning_type: 'Abstract',
+                        prompt: 'Generate the missing shape for the bottom-right position in this 3x3 matrix pattern.',
+                        nano: './static/img/nano/logic_2.png',
+                        gpt: './static/img/gpt/logic_2.png',
+                        bagel: './static/img/bagel/logic_2.png',
+                        qwen: './static/img/qwen/logic_2.png'
                     },
                     'item3': {
                         chart: './static/img/demo/logic_3.png',
-                        prompt: 'Illustrate the concept of logical fallacies using visual examples, specifically showing "correlation vs causation" with clear graphs and explanatory text.',
-                        nano: './static/img/nano/nano_logic_3.png',
-                        gpt: './static/img/gpt/gpt_logic_3.png',
-                        bagel: './static/img/bagel/bagel_logic_3.png',
-                        qwen: './static/img/qwen/qwen_logic_3.png'
+                        reasoning_type: 'Abstract',
+                        prompt: 'Arrange the three available pieces (A, B, and C) to completely fill the 3x3 tangram board.',
+                        nano: './static/img/nano/logic_3.png',
+                        gpt: './static/img/gpt/logic_3.png',
+                        bagel: './static/img/bagel/logic_3.png',
+                        qwen: './static/img/qwen/logic_3.png'
                     },
                     'item4': {
                         chart: './static/img/demo/logic_4.png',
-                        prompt: 'Illustrate the concept of logical fallacies using visual examples, specifically showing "correlation vs causation" with clear graphs and explanatory text.',
-                        nano: './static/img/nano/nano_logic_4.png',
-                        gpt: './static/img/gpt/gpt_logic_4.png',
-                        bagel: './static/img/bagel/bagel_logic_4.png',
-                        qwen: './static/img/qwen/qwen_logic_4.png'
+                        reasoning_type: 'Abstract',
+                        prompt: 'Generate the next logical move in this tic-tac-toe game for player O.',
+                        nano: './static/img/nano/logic_4.png',
+                        gpt: './static/img/gpt/logic_4.png',
+                        bagel: './static/img/bagel/logic_4.png',
+                        qwen: './static/img/qwen/logic_4.png'
                     },
                     'item5': {
                         chart: './static/img/demo/logic_5.png',
-                        prompt: 'Illustrate the concept of logical fallacies using visual examples, specifically showing "correlation vs causation" with clear graphs and explanatory text.',
-                        nano: './static/img/nano/nano_logic_5.png',
-                        gpt: './static/img/gpt/gpt_logic_5.png',
-                        bagel: './static/img/bagel/bagel_logic_5.png',
-                        qwen: './static/img/qwen/qwen_logic_5.png'
+                        reasoning_type: 'Mathematical',
+                        prompt: 'Generate this image with the missing width measurement labeled on the third geometric shape.',
+                        nano: './static/img/nano/logic_5.png',
+                        gpt: './static/img/gpt/logic_5.png',
+                        bagel: './static/img/bagel/logic_5.png',
+                        qwen: './static/img/qwen/logic_5.png'
                     },
                     'item6': {
-                        chart: './static/img/demo/logic_6.png',
-                        prompt: 'Illustrate the concept of logical fallacies using visual examples, specifically showing "correlation vs causation" with clear graphs and explanatory text.',
-                        nano: './static/img/nano/nano_logic_6.png',
-                        gpt: './static/img/gpt/gpt_logic_6.png',
-                        bagel: './static/img/bagel/bagel_logic_6.png',
-                        qwen: './static/img/qwen/qwen_logic_6.png'
+                        chart: './static/img/demo/logic_6.jpg',
+                        reasoning_type: 'Abstract',
+                        prompt: 'Generate the solution path marked in red for this maze from the green start position to the E.',
+                        nano: './static/img/nano/logic_6.png',
+                        gpt: './static/img/gpt/logic_6.png',
+                        bagel: './static/img/bagel/logic_6.png',
+                        qwen: './static/img/qwen/logic_6.png'
                     },
                     'item7': {
                         chart: './static/img/demo/logic_7.png',
-                        prompt: 'Illustrate the concept of logical fallacies using visual examples, specifically showing "correlation vs causation" with clear graphs and explanatory text.',
-                        nano: './static/img/nano/nano_logic_7.png',
-                        gpt: './static/img/gpt/gpt_logic_7.png',
-                        bagel: './static/img/bagel/bagel_logic_7.png',
-                        qwen: './static/img/qwen/qwen_logic_7.png'
+                        reasoning_type: 'Mathematical',
+                        prompt: 'Find $z$. Please annotate your answer directly on the image.',
+                        nano: './static/img/nano/logic_7.png',
+                        gpt: './static/img/gpt/logic_7.png',
+                        bagel: './static/img/bagel/logic_7.png',
+                        qwen: './static/img/qwen/logic_7.png'
                     },
                     'item8': {
                         chart: './static/img/demo/logic_8.png',
-                        prompt: 'Illustrate the concept of logical fallacies using visual examples, specifically showing "correlation vs causation" with clear graphs and explanatory text.',
-                        nano: './static/img/nano/nano_logic_8.png',
-                        gpt: './static/img/gpt/gpt_logic_8.png',
-                        bagel: './static/img/bagel/bagel_logic_8.png',
-                        qwen: './static/img/qwen/qwen_logic_8.png'
+                        reasoning_type: 'Abstract',
+                        prompt: 'Complete this arrangement into a full 5×5 grid, with the added blocks shown in black.',
+                        nano: './static/img/nano/logic_8.png',
+                        gpt: './static/img/gpt/logic_8.png',
+                        bagel: './static/img/bagel/logic_8.png',
+                        qwen: './static/img/qwen/logic_8.png'
                     },
                     'item9': {
-                        chart: './static/img/demo/logic_9.png',
-                        prompt: 'Illustrate the concept of logical fallacies using visual examples, specifically showing "correlation vs causation" with clear graphs and explanatory text.',
-                        nano: './static/img/nano/nano_logic_9.png',
-                        gpt: './static/img/gpt/gpt_logic_9.png',
-                        bagel: './static/img/bagel/bagel_logic_9.png',
-                        qwen: './static/img/qwen/qwen_logic_9.png'
+                        chart: './static/img/demo/logic_9.jpg',
+                        reasoning_type: 'Abstract',
+                        prompt: 'Generate this 3D scene with all small spheres and green metallic objects removed.',
+                        nano: './static/img/nano/logic_9.png',
+                        gpt: './static/img/gpt/logic_9.png',
+                        bagel: './static/img/bagel/logic_9.png',
+                        qwen: './static/img/qwen/logic_9.png'
                     },
                     'item10': {
                         chart: './static/img/demo/logic_10.png',
-                        prompt: 'Illustrate the concept of logical fallacies using visual examples, specifically showing "correlation vs causation" with clear graphs and explanatory text.',
-                        nano: './static/img/nano/nano_logic_10.png',
-                        gpt: './static/img/gpt/gpt_logic_10.png',
-                        bagel: './static/img/bagel/bagel_logic_10.png',
-                        qwen: './static/img/qwen/qwen_logic_10.png'
+                        reasoning_type: 'Mathematical',
+                        prompt: 'Generate the next iteration in this fractal pattern sequence.',
+                        nano: './static/img/nano/logic_10.png',
+                        gpt: './static/img/gpt/logic_10.png',
+                        bagel: './static/img/bagel/logic_10.png',
+                        qwen: './static/img/qwen/logic_10.png'
+                    },
+                    'item11': {
+                        chart: './static/img/demo/logic_11.png',
+                        reasoning_type: 'Mathematical',
+                        prompt: 'Generate the view of this 3D structure from the direction indicated by the arrow',
+                        nano: './static/img/nano/logic_11.png',
+                        gpt: './static/img/gpt/logic_11.png',
+                        bagel: './static/img/bagel/logic_11.png',
+                        qwen: './static/img/qwen/logic_11.png'
+                    },
+                    'item12': {
+                        chart: './static/img/demo/logic_12.png',
+                        reasoning_type: 'Mathematical',
+                        prompt: 'Find $x$. Assume that segments that appear to be tangent are tangent. Please annotate your answer directly on the image.',
+                        nano: './static/img/nano/logic_12.png',
+                        gpt: './static/img/gpt/logic_12.png',
+                        bagel: './static/img/bagel/logic_12.png',
+                        qwen: './static/img/qwen/logic_12.png'
                     }
                 }
             };
@@ -1062,6 +1204,424 @@
                 document.getElementById(currentCategory + '-thumbnails').style.display = 'grid';
             }
             showDetail('natural-science', 'item1');
+            
+            // ROVER-IG Data Statistics
+            function createSankeyChart() {
+                console.log('Creating Sankey chart...');
+                // ROVER-IG 数据
+                const igData = {
+                    'main_categories': [
+                        {
+                            'name': 'Natural Science',
+                            'color': '#4DBEAA',
+                            'sub_categories': [
+                                {'name': 'Temporal', 'count': 54},
+                                {'name': 'Spatial', 'count': 32},
+                                {'name': 'Causal', 'count': 31},
+                                {'name': 'Synthetic', 'count': 46},
+                                {'name': 'Quantitative', 'count': 60}
+                            ]
+                        },
+                        {
+                            'name': 'Culture Art',
+                            'color': '#FF7FB3',
+                            'sub_categories': [
+                                {'name': 'Temporal', 'count': 46},
+                                {'name': 'Spatial', 'count': 61},
+                                {'name': 'Causal', 'count': 40},
+                                {'name': 'Synthetic', 'count': 100},
+                                {'name': 'Quantitative', 'count': 47}
+                            ]
+                        },
+                        {
+                            'name': 'Common Sense',
+                            'color': '#5DADE2',
+                            'sub_categories': [
+                                {'name': 'Temporal', 'count': 55},
+                                {'name': 'Spatial', 'count': 97},
+                                {'name': 'Causal', 'count': 35},
+                                {'name': 'Synthetic', 'count': 37},
+                                {'name': 'Quantitative', 'count': 23}
+                            ]
+                        },
+                        {
+                            'name': 'Logic',
+                            'color': '#FFB347',
+                            'sub_categories': [
+                                {'name': 'Abstract', 'count': 80},
+                                {'name': 'Math', 'count': 60}
+                            ]
+                        }
+                    ]
+                };
+
+                // 计算总数
+                let totalAll = 0;
+                for (let cat of igData.main_categories) {
+                    for (let sub of cat.sub_categories) {
+                        totalAll += sub.count;
+                    }
+                }
+
+                let labels = [];
+                let colors = [];
+                let customdata = [];
+
+                // 第一层：ROVER-IG根节点
+                let rootIdx = 0;
+                labels.push("<b><span style='font-size: 14px'>Verbally-augmented Reasoning</span><br><span style='font-size: 14px'>for Visual Generation</span><br><br><span style='font-size: 14px'>ROVER-IG</span>");
+                colors.push('#9370DB');
+                customdata.push(`<b>ROVER-IG</b><br>Total Count: ${totalAll}<br>Categories: 4`);
+
+                // 第二层：Domains
+                let domainIndices = {};
+                let domainTotals = {};
+                for (let cat of igData.main_categories) {
+                    let total = cat.sub_categories.reduce((sum, sub) => sum + sub.count, 0);
+                    domainTotals[cat.name] = total;
+                    let percentage = (total / totalAll) * 100;
+
+                    domainIndices[cat.name] = labels.length;
+                    labels.push(`<b>${cat.name}</b><br>${percentage.toFixed(1)}%`);
+                    colors.push(cat.color);
+                    customdata.push(`<b>${cat.name}</b><br>Count: ${total}`);
+                }
+
+                // 第三层：7种Reasoning类型
+                let reasoningList = ['Temporal', 'Spatial', 'Causal', 'Synthetic', 'Quantitative', 'Abstract', 'Math'];
+                let reasoningIndices = {};
+                let reasoningTotals = {};
+                for (let r of reasoningList) {
+                    reasoningTotals[r] = 0;
+                }
+
+                // 计算每种reasoning的总数
+                for (let cat of igData.main_categories) {
+                    for (let sub of cat.sub_categories) {
+                        if (reasoningTotals.hasOwnProperty(sub.name)) {
+                            reasoningTotals[sub.name] += sub.count;
+                        }
+                    }
+                }
+
+                // 创建reasoning节点
+                for (let reasoningName of reasoningList) {
+                    reasoningIndices[reasoningName] = labels.length;
+                    let total = reasoningTotals[reasoningName];
+                    let percentage = (total / totalAll) * 100;
+                    labels.push(`<span style="font-weight: bold">${reasoningName}</span><br><span style="font-weight: bold">${percentage.toFixed(1)}%</span>`);
+                    colors.push('#E0E0E0');
+                    customdata.push(`<b>${reasoningName}</b><br>Count: ${total}`);
+                }
+
+                // 创建链接
+                let sources = [];
+                let targets = [];
+                let values = [];
+                let linkColors = [];
+                let linkCustomdata = [];
+
+                // 第一层到第二层：ROVER-IG -> Domains
+                for (let cat of igData.main_categories) {
+                    let domainIdx = domainIndices[cat.name];
+                    let total = domainTotals[cat.name];
+
+                    sources.push(rootIdx);
+                    targets.push(domainIdx);
+                    values.push(total);
+                    linkColors.push('rgba(147, 112, 219, 0.4)');
+                    linkCustomdata.push(`<b>ROVER-IG → ${cat.name}</b><br>Count: ${total}`);
+                }
+
+                // 第二层到第三层：Domains -> Reasoning
+                for (let cat of igData.main_categories) {
+                    let domainIdx = domainIndices[cat.name];
+
+                    for (let sub of cat.sub_categories) {
+                        if (reasoningIndices.hasOwnProperty(sub.name)) {
+                            let reasoningIdx = reasoningIndices[sub.name];
+
+                            sources.push(domainIdx);
+                            targets.push(reasoningIdx);
+                            values.push(sub.count);
+                            linkColors.push(hexToRgba(cat.color, 0.5));
+                            linkCustomdata.push(`<b>${cat.name} → ${sub.name}</b><br>Count: ${sub.count}`);
+                        }
+                    }
+                }
+
+                // 创建Sankey图
+                let data = [{
+                    type: "sankey",
+                    arrangement: "freeform",
+                    node: {
+                        pad: 12,
+                        thickness: 8,
+                        line: {color: "white", width: 1},
+                        label: labels,
+                        color: colors,
+                        customdata: customdata,
+                        hovertemplate: '%{customdata}<extra></extra>'
+                    },
+                    link: {
+                        source: sources,
+                        target: targets,
+                        value: values,
+                        color: linkColors,
+                        customdata: linkCustomdata,
+                        hovertemplate: '%{customdata}<extra></extra>'
+                    }
+                }];
+
+                let layout = {
+                    title: {
+                        text: '<b>ROVER-IG Structure</b>',
+                        x: 0.5,
+                        xanchor: 'center',
+                        font: {size: 18, family: 'Palatino', color: '#333333'}
+                    },
+                    font: {size: 10, family: 'Palatino', color: '#333333'},
+                    height: 250,
+                    width: 450,
+                    margin: {l: 0, r: 0, t: 30, b: 10, pad: 0},
+                    plot_bgcolor: '#FAFAFA',
+                    paper_bgcolor: 'white',
+                    autosize: true,
+                    showlegend: false,
+                    hoverlabel: {
+                        bgcolor: 'rgba(255, 255, 255, 0.9)',
+                        bordercolor: 'rgba(0, 0, 0, 0.1)',
+                        font: {
+                            family: 'Palatino',
+                            size: 12,
+                            color: '#333333'
+                        }
+                    }
+                };
+
+                let config = {
+                    responsive: true,
+                    displayModeBar: false
+                };
+
+                console.log('Plotting Sankey chart with data:', data);
+                Plotly.newPlot('sankey-chart-ig', data, layout, config);
+                
+                // 创建ROVER-TG图表
+                createROVERTGChart();
+                
+            }
+
+            function createROVERTGChart() {
+                console.log('Creating ROVER-TG Sankey chart...');
+                // ROVER-TG 数据
+                const tgData = {
+                    'main_categories': [
+                        {
+                            'name': 'World Model',
+                            'color': '#90C695',
+                            'sub_categories': [
+                                {'name': 'Embodied', 'count': 46},
+                                {'name': 'Physical', 'count': 32},
+                            ]
+                        },
+                        {
+                            'name': 'Logical\nAssistance',
+                            'color': '#F0D568',
+                            'sub_categories': [
+                                {'name': 'Geometry', 'count': 80},
+                                {'name': 'Puzzles', 'count': 70}
+                            ]
+                        },
+                        {
+                            'name': 'Visual\nPerception',
+                            'color': '#F2B5D4',
+                            'sub_categories': [
+                                {'name': 'Jigsaw', 'count': 78},
+                                {'name': 'Spatial', 'count': 75},
+                            ]
+                        }
+                    ]
+                };
+
+                // 计算总数
+                let totalAll = 0;
+                for (let cat of tgData.main_categories) {
+                    for (let sub of cat.sub_categories) {
+                        totalAll += sub.count;
+                    }
+                }
+
+                let labels = [];
+                let colors = [];
+                let customdata = [];
+
+                // 第一层：ROVER-TG根节点
+                let rootIdx = 0;
+                labels.push("<b><span style='font-size: 14px'>Visually-augmented Reasoning</span><br><span style='font-size: 14px'>for Verbal Generation</span><br><br><span style='font-size: 14px'>ROVER-TG</span>");
+                colors.push('#87CEEB');
+                customdata.push(`<b>ROVER-TG</b><br>Total Count: ${totalAll}<br>Categories: 3`);
+
+                // 第二层：Domains
+                let domainIndices = {};
+                let domainTotals = {};
+                for (let cat of tgData.main_categories) {
+                    let total = cat.sub_categories.reduce((sum, sub) => sum + sub.count, 0);
+                    domainTotals[cat.name] = total;
+                    let percentage = (total / totalAll) * 100;
+
+                    domainIndices[cat.name] = labels.length;
+                    labels.push(`<span style="font-weight: bold">${cat.name}</span><br><span style="font-weight: bold">${percentage.toFixed(1)}%</span>`);
+                    colors.push(cat.color);
+                    customdata.push(`<b>${cat.name}</b><br>Count: ${total}`);
+                }
+
+                // 第三层：6种Reasoning类型
+                let reasoningList = ['Physical', 'Embodied', 'Geometry', 'Puzzles', 'Jigsaw', 'Spatial'];
+                let reasoningIndices = {};
+                let reasoningTotals = {};
+                for (let r of reasoningList) {
+                    reasoningTotals[r] = 0;
+                }
+
+                // 计算每种reasoning的总数
+                for (let cat of tgData.main_categories) {
+                    for (let sub of cat.sub_categories) {
+                        if (reasoningTotals.hasOwnProperty(sub.name)) {
+                            reasoningTotals[sub.name] += sub.count;
+                        }
+                    }
+                }
+
+                // 创建reasoning节点
+                for (let reasoningName of reasoningList) {
+                    reasoningIndices[reasoningName] = labels.length;
+                    let percentage = (reasoningTotals[reasoningName] / totalAll) * 100;
+                    labels.push(`<span style="font-weight: bold">${reasoningName}</span><br><span style="font-weight: bold">${percentage.toFixed(1)}%</span>`);
+                    colors.push('#E8D5B7'); // 更现代的淡褐色
+                    customdata.push(`<b>${reasoningName}</b><br>Count: ${reasoningTotals[reasoningName]}`);
+                }
+
+                // 创建连接
+                let sources = [];
+                let targets = [];
+                let values = [];
+                let linkColors = [];
+                let linkCustomdata = [];
+
+                // 从根节点到主类别
+                for (let cat of tgData.main_categories) {
+                    sources.push(rootIdx);
+                    targets.push(domainIndices[cat.name]);
+                    values.push(domainTotals[cat.name]);
+                    linkColors.push(hexToRgba('#87CEEB', 0.6));
+                    linkCustomdata.push(`<b>ROVER-TG → ${cat.name}</b><br>Count: ${domainTotals[cat.name]}`);
+                }
+
+                // 从主类别到reasoning类型
+                for (let cat of tgData.main_categories) {
+                    for (let sub of cat.sub_categories) {
+                        if (reasoningIndices.hasOwnProperty(sub.name)) {
+                            sources.push(domainIndices[cat.name]);
+                            targets.push(reasoningIndices[sub.name]);
+                            values.push(sub.count);
+                            linkColors.push(hexToRgba(cat.color, 0.6));
+                            linkCustomdata.push(`<b>${cat.name} → ${sub.name}</b><br>Count: ${sub.count}`);
+                        }
+                    }
+                }
+
+                // 创建Sankey图
+                let data = [{
+                    type: "sankey",
+                    arrangement: "freeform",
+                    node: {
+                        pad: 15,
+                        thickness: 8,
+                        line: {color: "white", width: 1},
+                        label: labels,
+                        color: colors,
+                        customdata: customdata,
+                        hovertemplate: '%{customdata}<extra></extra>'
+                    },
+                    link: {
+                        source: sources,
+                        target: targets,
+                        value: values,
+                        color: linkColors,
+                        customdata: linkCustomdata,
+                        hovertemplate: '%{customdata}<extra></extra>'
+                    }
+                }];
+
+                let layout = {
+                    title: {
+                        text: '<b>ROVER-TG Structure</b>',
+                        x: 0.5,
+                        xanchor: 'center',
+                        font: {size: 14, family: 'Palatino', color: '#333333'}
+                    },
+                    font: {size: 10, family: 'Palatino', color: '#333333'},
+                    height: 200,
+                    width: 450,
+                    margin: {l: 0, r: 0, t: 30, b: 10, pad: 0},
+                    plot_bgcolor: '#FAFAFA',
+                    paper_bgcolor: 'white',
+                    autosize: true,
+                    showlegend: false,
+                    hoverlabel: {
+                        bgcolor: 'rgba(255, 255, 255, 0.9)',
+                        bordercolor: 'rgba(0, 0, 0, 0.1)',
+                        font: {
+                            family: 'Palatino',
+                            size: 12,
+                            color: '#333333'
+                        }
+                    }
+                };
+
+                let config = {
+                    responsive: true,
+                    displayModeBar: false
+                };
+
+                console.log('Plotting ROVER-TG Sankey chart with data:', data);
+                Plotly.newPlot('sankey-chart-tg', data, layout, config);
+            }
+
+            function hexToRgba(hex, alpha = 0.5) {
+                hex = hex.replace('#', '');
+                let r = parseInt(hex.substr(0, 2), 16);
+                let g = parseInt(hex.substr(2, 2), 16);
+                let b = parseInt(hex.substr(4, 2), 16);
+                return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+            }
+            
+
+            // 页面加载完成后创建Sankey图
+            document.addEventListener('DOMContentLoaded', function() {
+                // 确保Plotly已加载
+                function initSankey() {
+                    if (typeof Plotly !== 'undefined') {
+                        try {
+                            createSankeyChart();
+                            console.log('Sankey chart created successfully');
+                        } catch (error) {
+                            console.error('Error creating Sankey chart:', error);
+                            // 显示错误信息
+                            document.getElementById('sankey-chart').innerHTML = 
+                                '<div style="text-align: center; padding: 50px; color: #666;">' +
+                                '<p>图表加载失败，请刷新页面重试</p>' +
+                                '<p style="font-size: 12px;">Error: ' + error.message + '</p>' +
+                                '</div>';
+                        }
+                    } else {
+                        // 如果Plotly还没加载，继续等待
+                        setTimeout(initSankey, 500);
+                    }
+                }
+                initSankey();
+            });
         </script>
     </div>
 
